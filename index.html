@@ -250,6 +250,151 @@
             color: var(--primary);
         }
 
+        /* ---------- ВИДЕО ---------- */
+        .video-section {
+            padding: 150px 0;
+            background-color: white;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .video-card {
+            border: 1px solid var(--border);
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        .video-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+        .video-card:hover:before {
+            transform: translateX(0);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: #000;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ---------- ТРЕНЕРЫ ---------- */
+        .trainers-section {
+            padding: 150px 0;
+            background-color: white;
+        }
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .trainer-card {
+            border: 1px solid var(--border);
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .trainer-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+        .trainer-card:hover:before {
+            transform: translateX(0);
+        }
+        .trainer-photo {
+            width: 180px;
+            height: 240px;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            border-radius: 5px;
+            border: 3px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .trainer-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .trainer-photo:hover .trainer-img {
+            transform: scale(1.05);
+        }
+        .trainer-rank {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+        .trainer-name {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .trainer-title {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+        .trainer-contact {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 20px;
+        }
+        .trainer-achievements {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(139,0,0,0.05);
+            border-left: 3px solid var(--secondary);
+            text-align: left;
+        }
+        .achievement-list {
+            list-style: none;
+        }
+        .achievement-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .achievement-list li:before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
         /* ---------- ПУТЬ ---------- */
         .path-section {
             padding: 150px 0;
@@ -342,56 +487,6 @@
         .philosophy-text {
             font-size: 1.2rem;
             line-height: 2;
-        }
-
-        /* ---------- ВИДЕО ---------- */
-        .video-section {
-            padding: 150px 0;
-            background-color: white;
-        }
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-        .video-card {
-            border: 1px solid var(--border);
-            padding: 40px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        .video-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-        .video-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--primary);
-            transform: translateX(-100%);
-            transition: transform 0.3s;
-        }
-        .video-card:hover:before {
-            transform: translateX(0);
-        }
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background: #000;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
         }
 
         /* ---------- ГАЛЕРЕЯ ---------- */
@@ -511,101 +606,6 @@
         .dot.active {
             background: white;
             transform: scale(1.2);
-        }
-
-        /* ---------- ТРЕНЕРЫ ---------- */
-        .trainers-section {
-            padding: 150px 0;
-            background-color: white;
-        }
-        .trainers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-        .trainer-card {
-            border: 1px solid var(--border);
-            padding: 40px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        .trainer-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--primary);
-            transform: translateX(-100%);
-            transition: transform 0.3s;
-        }
-        .trainer-card:hover:before {
-            transform: translateX(0);
-        }
-        .trainer-photo {
-            width: 180px;
-            height: 240px;
-            margin: 0 auto 30px;
-            overflow: hidden;
-            border-radius: 5px;
-            border: 3px solid var(--border);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .trainer-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .trainer-photo:hover .trainer-img {
-            transform: scale(1.05);
-        }
-        .trainer-rank {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 0.9rem;
-            color: var(--secondary);
-            letter-spacing: 0.1em;
-            margin-bottom: 10px;
-        }
-        .trainer-name {
-            font-size: 2rem;
-            margin-bottom: 5px;
-        }
-        .trainer-title {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-bottom: 25px;
-        }
-        .trainer-contact {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-top: 20px;
-        }
-        .trainer-achievements {
-            margin: 20px 0;
-            padding: 20px;
-            background-color: rgba(139,0,0,0.05);
-            border-left: 3px solid var(--secondary);
-            text-align: left;
-        }
-        .achievement-list {
-            list-style: none;
-        }
-        .achievement-list li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-        .achievement-list li:before {
-            content: "•";
-            color: var(--secondary);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
         }
 
         /* ---------- РАСПИСАНИЕ ---------- */
@@ -814,11 +814,11 @@
             </button>
             <nav id="mainNav">
                 <ul>
+                    <li><a href="#video">Видео</a></li>
+                    <li><a href="#trainers">Тренеры</a></li>
                     <li><a href="#path">Путь</a></li>
                     <li><a href="#philosophy">Философия</a></li>
-                    <li><a href="#video">Видео</a></li>
                     <li><a href="#gallery">Галерея</a></li>
-                    <li><a href="#trainers">Тренеры</a></li>
                     <li><a href="#schedule">Расписание</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
@@ -826,7 +826,7 @@
         </div>
     </header>
 
-    <!-- ГЛАВНЫЙ ЭКРАН – КНОПКА ЧЁТКО ВИДНА -->
+    <!-- ГЛАВНЫЙ ЭКРАН -->
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="container">
@@ -842,6 +842,96 @@
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
                     <a href="https://t.me/FastSafe1" target="_blank" class="btn">🚀 Начать путь в Telegram</a>
                     <a href="#schedule" class="btn btn-outline">📅 Расписание</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ВИДЕО – СЛОВО ТРЕНЕРА (ПЕРВЫМ!) -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <h2 class="section-title-full">Слово тренера</h2>
+            <div class="video-grid">
+                <!-- ВИДЕО ДЛЯ ШКОЛЬНИКОВ -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://rutube.ru/play/embed/227f2e8d5a2f642563347f101bc21ff7"
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Родителям школьников (7-17 лет)</h3>
+                        <p><strong>Главный тренер Вячеслав Пырх</strong> рассказывает о том, как занятия тхэквондо помогают в учёбе и взрослении.</p>
+                    </div>
+                </div>
+                <!-- ВИДЕО ДЛЯ ДОШКОЛЬНИКОВ -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://rutube.ru/play/embed/f2fc5714e3be1ae288f61a63aedbeaa2"
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Для родителей дошкольников (4-6 лет)</h3>
+                        <p><strong>Тренер</strong> объясняет особенности подхода к самым юным ученикам.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТРЕНЕРЫ (ВТОРЫМИ!) -->
+    <section class="trainers-section" id="trainers">
+        <div class="container">
+            <h2 class="section-title-full">Наши тренеры</h2>
+            <div class="trainers-grid">
+                <!-- ПЫРХ ВЯЧЕСЛАВ АЛЕКСАНДРОВИЧ -->
+                <div class="trainer-card">
+                    <div class="trainer-photo">
+                        <img src="https://i.ibb.co/jPmFnDFt/pyrh.jpg" alt="Пырх Вячеслав Александрович" class="trainer-img">
+                    </div>
+                    <div class="trainer-rank">4 дан • КМС</div>
+                    <h3 class="trainer-name">Пырх Вячеслав Александрович</h3>
+                    <div class="trainer-title">Главный тренер</div>
+                    <div class="trainer-achievements">
+                        <h4>Достижения:</h4>
+                        <ul class="achievement-list">
+                            <li>Тренер-преподаватель второй категории</li>
+                            <li>4-ый дан по тхэквондо</li>
+                            <li>Кандидат в Мастера спорта</li>
+                            <li>Неоднократный победитель Чемпионата Дальнего Востока</li>
+                            <li>Победитель Чемпионата Приморского края (керуги)</li>
+                            <li>Бронзовый призёр Открытого Чемпионата Кореи</li>
+                            <li>Участник I Летней спартакиады молодежи России (2006, Ханты-Мансийск)</li>
+                            <li>Судья по спорту</li>
+                            <li>Тренер отделения тхэквондо ВТФ МБУ СП СШ "Высота" г. Владивостока</li>
+                        </ul>
+                    </div>
+                    <div class="trainer-contact"><i class="fas fa-phone"></i> 8 (964) 440-35-01</div>
+                </div>
+                <!-- СМОЛИН СЕРАФИМ СЕРГЕЕВИЧ -->
+                <div class="trainer-card">
+                    <div class="trainer-photo">
+                        <img src="https://i.ibb.co/ZRK6jkm3/smolin.jpg" alt="Смолин Серафим Сергеевич" class="trainer-img">
+                    </div>
+                    <div class="trainer-rank">1 дан • Капитан команды</div>
+                    <h3 class="trainer-name">Смолин Серафим Сергеевич</h3>
+                    <div class="trainer-title">Второй тренер</div>
+                    <div class="trainer-achievements">
+                        <h4>О тренере:</h4>
+                        <p>Опытный спортсмен и тренер, специализирующийся на работе со старшими группами.</p>
+                    </div>
+                    <div class="trainer-contact"><i class="fas fa-phone"></i> 8 (952) 082-72-06</div>
                 </div>
             </div>
         </div>
@@ -875,9 +965,7 @@
                         </div>
                     </div>
                     <h3>Что такое До (道)?</h3>
-                    <p><strong>До</strong> — это не просто «путь» или «дорога». Это философское понятие, означающее непрерывный процесс самосовершенствования, духовного роста и гармонии с миром.</p>
-                    <p>В тхэквондо <strong>До</strong> — это путь, который проходит каждый ученик: от белого пояса неведения к черному поясу мастерства, а затем — к пониманию, что настоящее мастерство лежит в постоянном учении, смирении и служении другим.</p>
-                    <p>Это путь длиною в жизнь, где каждый удар ногой, каждый блок рукой — не просто техника, а шаг к познанию себя, своих возможностей и своих границ.</p>
+                    <p><strong>До</strong> — это не просто «путь». Это непрерывный процесс самосовершенствования, духовного роста и гармонии с миром.</p>
                 </div>
             </div>
         </div>
@@ -893,59 +981,13 @@
                     а глубина каждого шага.
                 </div>
                 <div class="philosophy-text">
-                    <p>Тхэквондо учит не просто драться. Оно учит жить. Каждая тренировка — это медитация в движении, где разум, тело и дух становятся единым целым.</p>
-                    <p><strong>Жесткость линии</strong> — это не только прямая стойка или точный удар. Это внутренняя дисциплина, ясность намерений и непоколебимость духа перед лицом трудностей.</p>
-                    <p><strong>Спокойствие</strong> — это не отсутствие движения, а гармония внутри бури. Как дерево гнется, но не ломается под ветром, так и мастер тхэквондо сохраняет внутренний покой в самой жаркой схватке.</p>
-                    <p>Мы не просто учим бить ногами. Мы учим уважению к сопернику, дисциплине ума, силе воли и благородству духа.</p>
+                    <p>Тхэквондо учит жить. Каждая тренировка — это медитация в движении.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ВИДЕО – СЛОВО ТРЕНЕРА (RUTUBE) -->
-    <section class="video-section" id="video">
-        <div class="container">
-            <h2 class="section-title-full">Слово тренера</h2>
-            <div class="video-grid">
-                <!-- ВИДЕО ДЛЯ ШКОЛЬНИКОВ -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe 
-                            src="https://rutube.ru/play/embed/227f2e8d5a2f642563347f101bc21ff7"
-                            width="100%" 
-                            height="100%" 
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Родителям школьников (7-17 лет)</h3>
-                        <p><strong>Главный тренер Вячеслав Пырх</strong> рассказывает о том, как занятия тхэквондо помогают в учёбе и взрослении: развивают дисциплину, ответственность, умение концентрироваться и добиваться целей.</p>
-                    </div>
-                </div>
-                <!-- ВИДЕО ДЛЯ ДОШКОЛЬНИКОВ -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe 
-                            src="https://rutube.ru/play/embed/f2fc5714e3be1ae288f61a63aedbeaa2"
-                            width="100%" 
-                            height="100%" 
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Для родителей дошкольников (4-6 лет)</h3>
-                        <p><strong>Тренер</strong> объясняет особенности подхода к самым юным ученикам: развитие моторики через игру, основы дисциплины, социализация и подготовка к школе в дружественной атмосфере.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ГАЛЕРЕЯ – 34 ВАШИХ ФОТО -->
+    <!-- ГАЛЕРЕЯ – 34 ФОТО -->
     <section class="gallery-section" id="gallery">
         <div class="container">
             <h2 class="section-title-full">Наша жизнь в фотографиях</h2>
@@ -1045,53 +1087,6 @@
         </div>
     </section>
 
-    <!-- ТРЕНЕРЫ -->
-    <section class="trainers-section" id="trainers">
-        <div class="container">
-            <h2 class="section-title-full">Наши тренеры</h2>
-            <div class="trainers-grid">
-                <!-- ПЫРХ ВЯЧЕСЛАВ АЛЕКСАНДРОВИЧ -->
-                <div class="trainer-card">
-                    <div class="trainer-photo">
-                        <img src="https://i.ibb.co/jPmFnDFt/pyrh.jpg" alt="Пырх Вячеслав Александрович" class="trainer-img">
-                    </div>
-                    <div class="trainer-rank">5 дан • КМС</div>
-                    <h3 class="trainer-name">Пырх Вячеслав Александрович</h3>
-                    <div class="trainer-title">Главный тренер</div>
-                    <div class="trainer-achievements">
-                        <h4>Достижения:</h4>
-                        <ul class="achievement-list">
-                            <li>Тренер-преподаватель второй категории</li>
-                            <li>5-ый дан по тхэквондо</li>
-                            <li>Кандидат в Мастера спорта</li>
-                            <li>Неоднократный победитель Чемпионата Дальнего Востока</li>
-                            <li>Победитель Чемпионата Приморского края (керуги)</li>
-                            <li>Бронзовый призёр Открытого Чемпионата Кореи</li>
-                            <li>Участник I Летней спартакиады молодежи России (2006, Ханты-Мансийск)</li>
-                            <li>Судья по спорту</li>
-                            <li>Тренер отделения тхэквондо ВТФ МБУ СП СШ "Высота" г. Владивостока</li>
-                        </ul>
-                    </div>
-                    <div class="trainer-contact"><i class="fas fa-phone"></i> 8 (964) 440-35-01</div>
-                </div>
-                <!-- СМОЛИН СЕРАФИМ СЕРГЕЕВИЧ -->
-                <div class="trainer-card">
-                    <div class="trainer-photo">
-                        <img src="https://i.ibb.co/ZRK6jkm3/smolin.jpg" alt="Смолин Серафим Сергеевич" class="trainer-img">
-                    </div>
-                    <div class="trainer-rank">1 дан • Капитан команды</div>
-                    <h3 class="trainer-name">Смолин Серафим Сергеевич</h3>
-                    <div class="trainer-title">Второй тренер</div>
-                    <div class="trainer-achievements">
-                        <h4>О тренере:</h4>
-                        <p>Опытный спортсмен и тренер, специализирующийся на работе со старшими группами. Прошел путь от начинающего спортсмена до капитана команды и тренера.</p>
-                    </div>
-                    <div class="trainer-contact"><i class="fas fa-phone"></i> 8 (952) 082-72-06</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- РАСПИСАНИЕ -->
     <section class="schedule-section" id="schedule">
         <div class="container">
@@ -1140,7 +1135,7 @@
         </div>
     </section>
 
-    <!-- КОНТАКТЫ – ПОЛНАЯ ЧЕРТА И КНОПКА ЗВОНКА -->
+    <!-- КОНТАКТЫ -->
     <section class="contacts-section" id="contacts">
         <div class="container">
             <div class="contacts-container">
@@ -1188,7 +1183,7 @@
         </div>
     </footer>
 
-    <!-- СКРИПТЫ (МОБИЛЬНОЕ МЕНЮ, ПЛАВНАЯ ПРОКРУТКА, ПАРАЛЛАКС, ИСПРАВЛЕННЫЙ СЛАЙДЕР) -->
+    <!-- СКРИПТЫ -->
     <script>
         // ---------- МОБИЛЬНОЕ МЕНЮ ----------
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1223,7 +1218,7 @@
             });
         });
 
-        // ---------- ОБНОВЛЕНИЕ ГОДА В ПОДВАЛЕ ----------
+        // ---------- ОБНОВЛЕНИЕ ГОДА ----------
         document.addEventListener('DOMContentLoaded', function() {
             const copyright = document.querySelector('.copyright p');
             if (copyright) {
@@ -1240,7 +1235,7 @@
             }
         });
 
-        // ---------- СЛАЙДЕРЫ – ПОЛНОСТЬЮ ИСПРАВЛЕНЫ ----------
+        // ---------- СЛАЙДЕРЫ (ИСПРАВЛЕНЫ) ----------
         function initSlider(sliderId) {
             const slider = document.getElementById(sliderId);
             if (!slider) return;
@@ -1257,14 +1252,9 @@
             let isDragging = false;
 
             function updateSlider() {
-                // Перемещаем ленту слайдов
                 wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Активируем нужную точку
                 dots.forEach(dot => dot.classList.remove('active'));
                 if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-                
-                // Активируем нужный слайд
                 slides.forEach(slide => slide.classList.remove('active'));
                 if (slides[currentSlide]) slides[currentSlide].classList.add('active');
             }
@@ -1279,11 +1269,9 @@
                 updateSlider();
             }
 
-            // Кнопки "вперед/назад"
             if (nextBtn) nextBtn.addEventListener('click', nextSlide);
             if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
-            // Точки-навигация
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     currentSlide = index;
@@ -1291,42 +1279,32 @@
                 });
             });
 
-            // Тач-события для мобильных (свайпы)
             slider.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 isDragging = true;
             });
-
             slider.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
             });
-
             slider.addEventListener('touchend', (e) => {
                 if (!isDragging) return;
                 const endX = e.changedTouches[0].clientX;
                 const diffX = endX - startX;
                 if (Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
-                        prevSlide();
-                    } else {
-                        nextSlide();
-                    }
+                    if (diffX > 0) prevSlide();
+                    else nextSlide();
                 }
                 isDragging = false;
             });
 
-            // Автопрокрутка каждые 5 секунд
             let slideInterval = setInterval(nextSlide, 5000);
-            
-            // Остановка при наведении мыши
             slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
             slider.addEventListener('mouseleave', () => {
                 slideInterval = setInterval(nextSlide, 5000);
             });
         }
 
-        // Инициализация всех трёх слайдеров
         document.addEventListener('DOMContentLoaded', function() {
             initSlider('training-slider');
             initSlider('attestation-slider');

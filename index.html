@@ -395,6 +395,37 @@
             font-weight: bold;
         }
 
+        /* ---------- ФОРМА ЗАПИСИ (НАВЕРХУ) ---------- */
+        .callback-section {
+            background: white;
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .callback-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .callback-form input {
+            padding: 18px 25px;
+            border: 1px solid var(--border);
+            font-size: 1.1rem;
+            font-family: inherit;
+            background: var(--paper);
+            transition: border-color 0.3s;
+        }
+        .callback-form input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        .callback-form .btn {
+            align-self: center;
+            min-width: 280px;
+        }
+
         /* ---------- ПУТЬ ---------- */
         .path-section {
             padding: 150px 0;
@@ -786,6 +817,7 @@
             .slider-container { height: 200px; }
             .slider-btn { width: 35px; height: 35px; font-size: 1.2rem; }
             .slider-dots { bottom: 10px; }
+            .callback-form .btn { min-width: 100%; }
         }
         @media (max-width: 576px) {
             h1 { font-size: 2.2rem; }
@@ -816,11 +848,11 @@
                 <ul>
                     <li><a href="#video">Видео</a></li>
                     <li><a href="#trainers">Тренеры</a></li>
+                    <li><a href="#callback">Записаться</a></li>
                     <li><a href="#path">Путь</a></li>
                     <li><a href="#philosophy">Философия</a></li>
                     <li><a href="#gallery">Галерея</a></li>
                     <li><a href="#schedule">Расписание</a></li>
-                    <li><a href="#callback">Записаться</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
             </nav>
@@ -937,6 +969,22 @@
             </div>
         </div>
     </section>
+
+    <!-- ---------- ФОРМА ЗАПИСИ (ПОДНЯТА НАВЕРХ, ПОСЛЕ ТРЕНЕРОВ) ---------- -->
+    <section class="callback-section" id="callback">
+        <div class="container">
+            <h2 class="section-title-full" style="text-align: center;">Записаться на тренировку</h2>
+            <form id="tgForm" class="callback-form">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Номер телефона" required>
+                <button type="submit" class="btn">📩 Отправить заявку</button>
+                <p style="font-size: 0.9rem; color: var(--text-light); text-align: center; margin-top: 0;">
+                    Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
+                </p>
+            </form>
+        </div>
+    </section>
+    <!-- ---------- КОНЕЦ ФОРМЫ ---------- -->
 
     <!-- ПУТЬ НОГИ И КУЛАКА -->
     <section class="path-section" id="path">
@@ -1135,28 +1183,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ---------- ФОРМА ОБРАТНОЙ СВЯЗИ В TELEGRAM ---------- -->
-    <section style="background: white; padding: 80px 0;" id="callback">
-        <div class="container">
-            <h2 class="section-title-full" style="text-align: center;">Записаться на тренировку</h2>
-            <div style="max-width: 600px; margin: 0 auto;">
-                <form id="tgForm" style="display: flex; flex-direction: column; gap: 20px;">
-                    <input type="text" name="name" placeholder="Ваше имя" required 
-                           style="padding: 15px 20px; border: 1px solid var(--border); font-size: 1.1rem; font-family: inherit;">
-                    <input type="tel" name="phone" placeholder="Номер телефона" required 
-                           style="padding: 15px 20px; border: 1px solid var(--border); font-size: 1.1rem; font-family: inherit;">
-                    <button type="submit" class="btn" style="align-self: center; min-width: 250px;">
-                        📩 Отправить заявку
-                    </button>
-                    <p style="font-size: 0.9rem; color: var(--text-light); text-align: center;">
-                        Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
-                    </p>
-                </form>
-            </div>
-        </div>
-    </section>
-    <!-- ---------- КОНЕЦ ФОРМЫ ---------- -->
 
     <!-- КОНТАКТЫ -->
     <section class="contacts-section" id="contacts">

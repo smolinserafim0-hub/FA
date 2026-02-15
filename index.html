@@ -395,37 +395,6 @@
             font-weight: bold;
         }
 
-        /* ---------- ФОРМА ЗАПИСИ (НАВЕРХУ) ---------- */
-        .callback-section {
-            background: white;
-            padding: 100px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        .callback-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        .callback-form input {
-            padding: 18px 25px;
-            border: 1px solid var(--border);
-            font-size: 1.1rem;
-            font-family: inherit;
-            background: var(--paper);
-            transition: border-color 0.3s;
-        }
-        .callback-form input:focus {
-            outline: none;
-            border-color: var(--secondary);
-        }
-        .callback-form .btn {
-            align-self: center;
-            min-width: 280px;
-        }
-
         /* ---------- ПУТЬ ---------- */
         .path-section {
             padding: 150px 0;
@@ -817,7 +786,6 @@
             .slider-container { height: 200px; }
             .slider-btn { width: 35px; height: 35px; font-size: 1.2rem; }
             .slider-dots { bottom: 10px; }
-            .callback-form .btn { min-width: 100%; }
         }
         @media (max-width: 576px) {
             h1 { font-size: 2.2rem; }
@@ -971,17 +939,23 @@
     </section>
 
     <!-- ---------- ФОРМА ЗАПИСИ (ПОДНЯТА НАВЕРХ, ПОСЛЕ ТРЕНЕРОВ) ---------- -->
-    <section class="callback-section" id="callback">
+    <section class="callback-section" id="callback" style="background: white; padding: 80px 0;">
         <div class="container">
             <h2 class="section-title-full" style="text-align: center;">Записаться на тренировку</h2>
-            <form id="tgForm" class="callback-form">
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Номер телефона" required>
-                <button type="submit" class="btn">📩 Отправить заявку</button>
-                <p style="font-size: 0.9rem; color: var(--text-light); text-align: center; margin-top: 0;">
-                    Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
-                </p>
-            </form>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form id="tgForm" style="display: flex; flex-direction: column; gap: 20px;">
+                    <input type="text" name="name" placeholder="Ваше имя" required 
+                           style="padding: 15px 20px; border: 1px solid var(--border); font-size: 1.1rem; font-family: inherit;">
+                    <input type="tel" name="phone" placeholder="Номер телефона" required 
+                           style="padding: 15px 20px; border: 1px solid var(--border); font-size: 1.1rem; font-family: inherit;">
+                    <button type="submit" class="btn" style="align-self: center; min-width: 250px;">
+                        📩 Отправить заявку
+                    </button>
+                    <p style="font-size: 0.9rem; color: var(--text-light); text-align: center;">
+                        Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
+                    </p>
+                </form>
+            </div>
         </div>
     </section>
     <!-- ---------- КОНЕЦ ФОРМЫ ---------- -->
@@ -1239,10 +1213,11 @@
             m[i].l=1*new Date();
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106795268', 'ym');
-        ym(106795268, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106838116', 'ym');
+
+        ym(106838116, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/106795268" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106838116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 
     <!-- СКРИПТЫ -->
@@ -1396,7 +1371,7 @@
                     alert('✅ Заявка отправлена! Мы свяжемся с вами.');
                     this.querySelector('input[name="name"]').value = '';
                     this.querySelector('input[name="phone"]').value = '';
-                    if (typeof ym !== 'undefined') ym(106795268, 'reachGoal', 'form_sent');
+                    if (typeof ym !== 'undefined') ym(106838116, 'reachGoal', 'form_sent');
                 } else {
                     alert('❌ Ошибка. Попробуйте позже или позвоните нам.');
                 }

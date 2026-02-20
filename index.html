@@ -88,7 +88,7 @@
             font-size: 1.1rem;
         }
 
-        /* ===== ШАПКА (С БУРГЕР-КНОПКОЙ) ===== */
+        /* ===== ШАПКА ===== */
         header {
             position: fixed;
             top: 0;
@@ -866,7 +866,7 @@
         </div>
     </header>
 
-    <!-- ВЫДВИЖНОЕ МЕНЮ -->
+    <!-- ВЫДВИЖНОЕ МЕНЮ (только нужные разделы) -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
@@ -882,89 +882,7 @@
             <li><a href="#schedule">Расписание</a></li>
             <li><a href="#callback">Записаться</a></li>
             <li><a href="#contacts">Контакты</a></li>
-            <li class="has-submenu">
-                <a href="#">Аттестация на пояса</a>
-                <ul class="submenu">
-                    <li><a href="attestation.html">Программа аттестации</a></li>
-                    <li><a href="#">Символика поясов</a></li>
-                    <li><a href="#">Основные стойки</a></li>
-                    <li><a href="#">Символики Пхумсэ</a></li>
-                    <li><a href="#">Терминология</a></li>
-                </ul>
-            </li>
-            <li class="has-submenu">
-                <a href="#">О тхэквондо</a>
-                <ul class="submenu">
-                    <li><a href="#">История развития</a></li>
-                    <li><a href="#">Философия тхэквондо</a></li>
-                    <li><a href="#">Правила соревнований</a></li>
-                    <li><a href="#">Психология победы</a></li>
-                    <li><a href="#">Этикет тхэквондо</a></li>
-                    <li><a href="#">Словарь</a></li>
-                    <li><a href="#">Хартия</a></li>
-                    <li><a href="#">Атрибутика</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Фотоальбомы</a></li>
-            <li class="has-submenu">
-                <a href="#">Соревнования</a>
-                <ul class="submenu">
-                    <li><a href="#">Наши победы</a></li>
-                    <li><a href="#">Перечень снаряжения</a></li>
-                </ul>
-            </li>
-            <li class="has-submenu">
-                <a href="#">Наши клубы</a>
-                <ul class="submenu">
-                    <li><a href="#">Клуб «Югэн»</a></li>
-                    <li><a href="#">Клуб «Файт»</a></li>
-                    <li><a href="#">Клуб «Кимс Тайгерс»</a></li>
-                    <li><a href="#">Клуб «Торнадо»</a></li>
-                    <li><a href="#">Клуб «Квон»</a></li>
-                    <li><a href="#">Клуб «Олимпиец»</a></li>
-                    <li><a href="#">Клуб «Тхэгук»</a></li>
-                    <li><a href="#">Клуб «Новик»</a></li>
-                    <li><a href="#">Клуб «СиР»</a></li>
-                    <li><a href="#">Клуб «Восход»</a></li>
-                    <li><a href="#">Клуб «Сокол»</a></li>
-                    <li><a href="#">Клуб «Иглз»</a></li>
-                    <li><a href="#">Клуб «Маяк»</a></li>
-                    <li><a href="#">Клуб «Емар»</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Публикации</a></li>
-            <li class="has-submenu">
-                <a href="#">Тренеры (все)</a>
-                <ul class="submenu">
-                    <li><a href="#">Баша Дмитрий Михайлович</a></li>
-                    <li><a href="#">Буренок Алексей Михайлович</a></li>
-                    <li><a href="#">Бянкин Роман Владимирович</a></li>
-                    <li><a href="#">Головин Иван Алексеевич</a></li>
-                    <li><a href="#">Карпенко Максим Сергеевич</a></li>
-                    <li><a href="#">Карпенко Сергей Валериевич</a></li>
-                    <li><a href="#">Ким Артем Артурович</a></li>
-                    <li><a href="#">Лаевский Павел Владимирович</a></li>
-                    <li><a href="#">Лебедев Денис Олегович</a></li>
-                    <li><a href="#">Никифоров Роман Анатольевич</a></li>
-                    <li><a href="#">Пось Фёдор Анатольевич</a></li>
-                    <li><a href="#">Пырх Вячеслав Александрович</a></li>
-                    <li><a href="#">Рымарь Борис Николаевич</a></li>
-                    <li><a href="#">Савельев Владимир Валентинович</a></li>
-                    <li><a href="#">Соколинский Алексей Владимирович</a></li>
-                    <li><a href="#">Топоров Алексей Евгеньевич</a></li>
-                    <li><a href="#">Мыльникова Виктория Андреевна</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Летний отдых</a></li>
-            <li><a href="#">Видеоматериалы</a></li>
-            <li><a href="#">Гостевая книга</a></li>
-            <li><a href="#">Наши опросы</a></li>
-            <li><a href="#">Зал славы</a></li>
-            <li><a href="#">Для спонсоров</a></li>
-            <li><a href="#">Наши документы</a></li>
-            <li><a href="#">Партнеры</a></li>
-            <li><a href="#">Ссылки</a></li>
-            <li><a href="#">История клубов</a></li>
+            <li><a href="attestation.html">Аттестация на пояса</a></li>
         </ul>
     </div>
 
@@ -1383,7 +1301,6 @@
         closeMenu.addEventListener('click', closeMenuFunc);
         menuOverlay.addEventListener('click', closeMenuFunc);
 
-        // МОБИЛЬНОЕ МЕНЮ (старое удалено)
         // ПЛАВНАЯ ПРОКРУТКА
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1491,8 +1408,8 @@
         });
 
         // ФОРМА ОБРАТНОЙ СВЯЗИ В TELEGRAM
-        const tgToken = '8116959879:AAF5QqqLdI1UYBxrd9QENbMs_7uZVj8NGQs'; // Твой токен
-        const chatId = '1178608703';                                     // Твой chat_id
+        const tgToken = '8116959879:AAF5QqqLdI1UYBxrd9QENbMs_7uZVj8NGQs';
+        const chatId = '1178608703';
 
         document.getElementById('tgForm').addEventListener('submit', function(e) {
             e.preventDefault();

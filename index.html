@@ -34,7 +34,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Фоновые иероглифы (как на странице аттестации) */
+        /* Фоновые иероглифы */
         .bg-kanji {
             position: fixed;
             top: 0;
@@ -287,6 +287,7 @@
             position: relative;
             overflow: hidden;
             padding-top: 210px;
+            z-index: 1;
         }
         .hero-bg {
             position: absolute;
@@ -302,6 +303,9 @@
         }
         .hero-content {
             width: 60%;
+            position: relative;
+            z-index: 5;
+            margin-bottom: 30px; /* добавлен отступ снизу */
         }
         .hero-title {
             font-size: 5rem;
@@ -328,7 +332,7 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
-            z-index: 1;
+            z-index: 10;
         }
         .btn:before {
             content: '';
@@ -357,6 +361,14 @@
         .btn-outline:hover {
             color: var(--black);
         }
+        /* Контейнер кнопок с дополнительным отступом */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
 
         /* ===== ВИДЕО ===== */
         .video-section {
@@ -384,19 +396,9 @@
             transform: translateY(-5px);
             border-color: var(--gold);
         }
+        /* Убрана анимированная полоса сверху */
         .video-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--gold);
-            transform: translateX(-100%);
-            transition: transform 0.3s;
-        }
-        .video-card:hover:before {
-            transform: translateX(0);
+            display: none;
         }
         .video-container {
             position: relative;
@@ -907,11 +909,13 @@
             margin: 20px 0;
             border-radius: 10px;
             border: 1px solid var(--red);
+            padding: 80px 0;
         }
         .callback-section input {
             background: rgba(255,255,255,0.1);
             border: 1px solid var(--red);
             color: var(--text-light);
+            border-radius: 5px;
         }
         .callback-section input:focus {
             outline: none;
@@ -950,6 +954,8 @@
             h2 { font-size: 2rem; }
             .hero { padding-top: 330px; }
             .hero-title { font-size: 3.5rem; }
+            .hero-buttons { justify-content: center; }
+            .btn { padding: 15px 30px; }
             .meaning-grid { grid-template-columns: 1fr; }
             .trainers-grid,
             .location-cards { grid-template-columns: 1fr; }
@@ -965,10 +971,11 @@
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.8rem; }
             .hero-title { font-size: 2.5rem; }
-            .btn { padding: 15px 40px; width: 100%; text-align: center; }
+            .btn { padding: 12px 25px; width: 100%; text-align: center; }
             .path-kanji { font-size: 8rem; }
             section { padding: 100px 0; }
             .video-container { height: 200px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -1032,7 +1039,7 @@
                     Искусство тхэквондо — это не просто боевое мастерство. 
                     Это путь самосовершенствования, дисциплины и гармонии тела с духом.
                 </p>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
+                <div class="hero-buttons">
                     <a href="https://t.me/FastSafe1" target="_blank" class="btn">🚀 Начать путь в Telegram</a>
                     <a href="#schedule" class="btn btn-outline">📅 Расписание</a>
                 </div>
@@ -1131,7 +1138,7 @@
     </section>
 
     <!-- ФОРМА ЗАПИСИ -->
-    <section class="callback-section" id="callback" style="padding: 80px 0;">
+    <section class="callback-section" id="callback">
         <div class="container">
             <h2 class="section-title-full" style="text-align: center;">Записаться на тренировку</h2>
             <div style="max-width: 600px; margin: 0 auto;">

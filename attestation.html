@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Программа аттестации | ФАЙТ Тхэквондо</title>
+    <title>Аттестация на пояса | ФАЙТ Тхэквондо</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Yuji+Mai&display=swap" rel="stylesheet">
     <style>
@@ -17,16 +17,10 @@
             background: #0a0a0a;
             color: #ccc;
             line-height: 1.6;
-            position: relative;
-            overflow-x: hidden;
             min-height: 100vh;
+            position: relative;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        /* фоновые иероглифы */
+        /* фоновые иероглифы (как во флаерах) */
         .bg-kanji {
             position: fixed;
             top: 0;
@@ -38,9 +32,9 @@
         }
         .bg-kanji span {
             position: absolute;
-            font-size: 120px;
+            font-size: 180px;
             font-weight: 900;
-            color: rgba(255, 215, 0, 0.02);
+            color: rgba(255, 215, 0, 0.03);
             white-space: nowrap;
             font-family: 'Arial Black', sans-serif;
             transform: rotate(-15deg);
@@ -49,11 +43,12 @@
         .bg-kanji span:nth-child(2) { top: 20%; left: 80%; }
         .bg-kanji span:nth-child(3) { bottom: 10%; left: 10%; }
         .bg-kanji span:nth-child(4) { bottom: 30%; right: 5%; }
+        .bg-kanji span:nth-child(5) { top: 50%; left: 40%; font-size: 300px; color: rgba(139,0,0,0.05); }
         .big-do {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            font-size: 300px;
+            font-size: 400px;
             font-family: 'Arial Black', sans-serif;
             color: rgba(139, 0, 0, 0.1);
             transform: rotate(-10deg);
@@ -61,30 +56,92 @@
             line-height: 1;
             pointer-events: none;
         }
-        .content {
+        .container {
             position: relative;
-            z-index: 1;
-            background: rgba(0,0,0,0.8);
+            z-index: 2;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 30px;
+        }
+        /* левое меню разделов */
+        .section-menu {
+            flex: 0 0 250px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #8B0000;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .section-menu h3 {
+            color: #FFD700;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #8B0000;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-family: 'Noto Serif JP', serif;
+        }
+        .section-menu ul {
+            list-style: none;
+        }
+        .section-menu li {
+            margin-bottom: 10px;
+        }
+        .section-menu a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .section-menu a:hover {
+            background: #8B0000;
+            color: #FFD700;
+            border-left-color: #FFD700;
+        }
+        .section-menu a.active {
+            background: #8B0000;
+            color: #FFD700;
+            border-left-color: #FFD700;
+        }
+        /* основной контент справа */
+        .main-content {
+            flex: 1;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
             padding: 30px;
             border-radius: 20px;
-            backdrop-filter: blur(2px);
+            border: 1px solid #8B0000;
         }
-        h1, h2 {
+        .section-block {
+            margin-bottom: 60px;
+            scroll-margin-top: 100px;
+        }
+        .section-block h2 {
             font-family: 'Noto Serif JP', serif;
             color: #FFD700;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
             border-left: 5px solid #8B0000;
-            padding-left: 15px;
+            padding-left: 20px;
+            margin-bottom: 30px;
         }
-        h1 {
-            font-size: 2.5rem;
-        }
-        h2 {
-            font-size: 2rem;
-        }
-        p {
+        .section-block p {
             margin-bottom: 20px;
             color: #ddd;
+        }
+        .section-block ul, .section-block ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        .section-block li {
+            margin-bottom: 8px;
         }
         .program-block {
             background: rgba(255,255,255,0.05);
@@ -114,32 +171,30 @@
         tr:nth-child(even) {
             background: rgba(139,0,0,0.2);
         }
-        a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
         .back-link {
             display: inline-block;
             margin-top: 30px;
-            padding: 10px 20px;
+            padding: 10px 25px;
             background: #8B0000;
             color: #FFD700;
             border-radius: 30px;
             font-weight: bold;
+            text-decoration: none;
+            transition: 0.2s;
         }
         .back-link i {
             margin-right: 8px;
+        }
+        .back-link:hover {
+            background: #a00000;
         }
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 30px;
             border-bottom: 2px solid #8B0000;
             padding-bottom: 15px;
-            margin-bottom: 30px;
         }
         .logo {
             font-size: 2rem;
@@ -151,129 +206,217 @@
             color: #ccc;
             margin-left: 10px;
         }
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.6rem; }
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            .section-menu {
+                position: static;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- фоновые иероглифы -->
+    <!-- Фоновые иероглифы -->
     <div class="bg-kanji">
         <span>태권도</span>
         <span>跆拳道</span>
         <span>武</span>
         <span>道</span>
+        <span>태권</span>
     </div>
     <div class="big-do">道</div>
 
     <div class="container">
-        <div class="content">
-            <div class="header">
-                <div class="logo">ФАЙТ <span>ТХЭКВОНДО КЛУБ</span></div>
-                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> На главную</a>
-            </div>
-
-            <h1>Программа аттестации на ученические ступени (гып)</h1>
-            <p>Программа аттестации на ученические ступени (гып) и мастерские ступени (дан), предусматривает объём знаний, умений и практических навыков, которыми должен овладеть каждый занимающийся в соответствии с учебным планом тренировочных занятий и длительностью своего обучения. Проще говоря — это список технических действий, приёмов и упражнений тхэквондо, выполняемых спортсменом для получения ступени мастерства (пояса).</p>
-            <p>Программа на ученические ступени разработана Федерацией с учётом требований, принятых во всём мире. Все спортсмены, рекомендованные для аттестации на цветные пояса, обязаны выполнять все пункты данной программы.</p>
-            <p>Аттестация на мастерские ступени (чёрно-красные, чёрные пояса) проводится в соответствии с Положением об аттестации Всемирной Академии Тхэквондо (Kukkiwon Regulations for Promotion Tests).</p>
-            <p>Для того чтобы быстрее разобраться с корейскими названиями, обратитесь к разделу <a href="#">ТЕРМИНОЛОГИЯ</a>.</p>
-
-            <h2>ПРОГРАММА АТТЕСТАЦИИ на гыпы (ученические степени)</h2>
-            <div class="program-block">
-                <p><strong>10 ГЫП</strong><br>
-                1. Чучум соги арэ, момтон, ольгуль-макки, момтон- чаруги<br>
-                2. Из чунби-соги: ап-соги пандэ арэ-макки, момтон, ольгуль-макки, пандэ-чаруги<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ап-куби пандэ арэ, момтон, ольгуль-макки, пандэ-чаруги<br>
-                3. Из ап-соги: махи на ап-чаги в движении;<br>
-                4. Из ап-соги: удары ап-чаги в движении</p>
-                <p>(движения по схеме: 3 движения вперёд-разворот -3 движения назад, темп:1 движение на 1 счёт)</p>
-
-                <p><strong>9 ГЫП</strong><br>
-                1. Программа 10-го гыпа<br>
-                2. 1-й пхумсэ (под счёт, темп: 1 движение на 1 счёт)</p>
-
-                <p><strong>8 ГЫП</strong><br>
-                1. Программа 10-го гыпа.<br>
-                2. Из ап-соги: махи на ёп-чаги в движении;<br>
-                3. 1-й пхумсэ</p>
-
-                <p><strong>7 ГЫП</strong><br>
-                1. Из чучум-соги выполняется момтон-чаруги, затем момтон дюбон чаруги;<br>
-                2. Программа 10-го гыпа<br>
-                3. Из ап-соги: махи на ёп-чаги в движении, удары долео-чаги в движении;<br>
-                4. 1-й, 2-й пхумсэ</p>
-
-                <p><strong>6 ГЫП</strong><br>
-                1. Из чучум-соги выполняется момтон-чаруги, затем момтон дюбон чаруги;<br>
-                2. Из Ап-куби: арэ-макки, монтон-пандэ-чаруги, пандэ-тын-чумок-чиги, ольгуль-макки, сонналь-мок-чиги;<br>
-                3. Из Тит-куби: монтон-макки, монтон-баккат-макки, монтон-сонналь-макки;<br>
-                4. Из Ап-куби: удары Ап-чаги, толео-чаги, махи на ёп-чаги в движении;<br>
-                5. 1-й, 2-й, 3-й пхумсэ</p>
-                <p>(движения по схеме: 3 движения вперёд-разворот -3 движения назад, темп:3 движения на 1 счёт)</p>
-
-                <p><strong>5 ГЫП</strong><br>
-                1. Программа 6-ого гыпа<br>
-                2. Добавляется из Ап-куби: Ёп-чаги в движении.<br>
-                3. 2-ой, 3-ий, 4-й пхумсэ</p>
-
-                <p><strong>4 ГЫП</strong><br>
-                1. Программа 5-ого гыпа<br>
-                2. 3-ий, 4-ый, 5-й пхумсэ</p>
-
-                <p><strong>3 ГЫП</strong><br>
-                1. Программа 5-ого гыпа<br>
-                2. 4-ый, 5-ый, 6-й пхумсэ</p>
-
-                <p><strong>2 ГЫП</strong><br>
-                1. Программа 5-ого гыпа<br>
-                2. Добавляется из ап-соги: удары Хурео-чаги, Нерио-чаги в движении;<br>
-                3. Хамбон-керуги<br>
-                4. 5-ый,6-ой, 7-й пхумсэ</p>
-
-                <p><strong>1 ГЫП</strong><br>
-                1. Программа 2-ого гыпа<br>
-                2. Добавляется из ап-соги: Титоро-ёп-чаги, Момдолео (Тит-хурео-чаги) в движении;<br>
-                3. 6-й, 7-ой, 8-й пхумсэ<br>
-                4. Сейбон-керуги<br>
-                5. Кьок-па</p>
-            </div>
-
-            <h2>ПРАВИЛА АТТЕСТАЦИИ на ДАНЫ и ПУМЫ (мастерские степени)</h2>
-            <p>в соответствии с «Аттестационными правилами ВТФ»:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>пум/дан</th>
-                        <th>Минимальное время подготовки</th>
-                        <th>Возрастные пределы для аттестации начиная с дана</th>
-                        <th>Возрастные пределы для аттестации начиная с пума</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>1 пум</td><td>-</td><td>-</td><td>моложе 15 лет</td></tr>
-                    <tr><td>с 1 на 2 пум</td><td>1 год</td><td>-</td><td>моложе 15 лет</td></tr>
-                    <tr><td>со 2 на 3 пум</td><td>2 года</td><td>-</td><td>моложе 15 лет</td></tr>
-                    <tr><td>с 3 на 4 пум</td><td>3 года</td><td>-</td><td>моложе 15 лет</td></tr>
-                    <tr><td>1 дан</td><td>-</td><td>15 лет и старше</td><td>-</td></tr>
-                    <tr style="background-color: #c0c0c0;"><td><strong>с 1 на 2 дан</strong></td><td><strong>1 год</strong></td><td><strong>16 лет и старше</strong></td><td><strong>15 лет и старше</strong></td></tr>
-                    <tr><td>со 2 на 3 дан</td><td>2 года</td><td>18 лет и старше</td><td>16 лет и старше</td></tr>
-                    <tr style="background-color: #c0c0c0;"><td><strong>с 3 на 4 дан</strong></td><td><strong>3 года</strong></td><td><strong>21 год и старше</strong></td><td><strong>18 лет и старше</strong></td></tr>
-                    <tr><td>с 4 на 5 дан</td><td>4 года</td><td>25 лет и старше</td><td>22 года и старше</td></tr>
-                    <tr style="background-color: #c0c0c0;"><td><strong>с 5 на 6 дан</strong></td><td><strong>5 лет</strong></td><td><strong>30 лет и старше</strong></td><td><strong>30 лет и старше</strong></td></tr>
-                    <tr><td>с 6 на 7 дан</td><td>6 лет</td><td>36 лет и старше</td><td>36 лет и старше</td></tr>
-                    <tr style="background-color: #c0c0c0;"><td><strong>с 7 на 8 дан</strong></td><td><strong>8 лет</strong></td><td><strong>44 года и старше</strong></td><td><strong>44 года и старше</strong></td></tr>
-                    <tr><td>с 8 на 9 дан</td><td>9 лет</td><td>53 года и старше</td><td>53 года и старше</td></tr>
-                    <tr><td>с 9 на 10 дан</td><td>-</td><td>60 лет и старше</td><td>60 лет и старше</td></tr>
-                </tbody>
-            </table>
-            <p>*по материалам книги «Тхэквондо: теория и методика. Том1. Спортивное единоборство.» под ред. Ю.А. Шулики и Е.Ю.Ключникова.</p>
-
-            <div style="margin-top: 40px;">
-                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> На главную</a>
+        <!-- Левое меню разделов -->
+        <div class="section-menu">
+            <h3>Аттестация</h3>
+            <ul>
+                <li><a href="#program" class="active">Программа аттестации</a></li>
+                <li><a href="#symbolics">Символика поясов</a></li>
+                <li><a href="#stances">Основные стойки</a></li>
+                <li><a href="#poomsae">Символики Пхумсэ</a></li>
+            </ul>
+            <div style="margin-top: 30px;">
+                <a href="index.html" style="color: #FFD700; text-decoration: none;"><i class="fas fa-arrow-left"></i> На главную</a>
             </div>
         </div>
+
+        <!-- Основной контент с разделами -->
+        <div class="main-content">
+            <div class="header">
+                <div class="logo">ФАЙТ <span>ТХЭКВОНДО КЛУБ</span></div>
+            </div>
+
+            <!-- Раздел 1: Программа аттестации -->
+            <div id="program" class="section-block">
+                <h2>Программа аттестации на ученические ступени (гып)</h2>
+                <p>Программа аттестации на ученические ступени (гып) и мастерские ступени (дан), предусматривает объём знаний, умений и практических навыков, которыми должен овладеть каждый занимающийся в соответствии с учебным планом тренировочных занятий и длительностью своего обучения. Проще говоря — это список технических действий, приёмов и упражнений тхэквондо, выполняемых спортсменом для получения ступени мастерства (пояса).</p>
+                <p>Программа на ученические ступени разработана Федерацией с учётом требований, принятых во всём мире. Все спортсмены, рекомендованные для аттестации на цветные пояса, обязаны выполнять все пункты данной программы.</p>
+                <p>Аттестация на мастерские ступени (чёрно-красные, чёрные пояса) проводится в соответствии с Положением об аттестации Всемирной Академии Тхэквондо (Kukkiwon Regulations for Promotion Tests).</p>
+                <p>Для того чтобы быстрее разобраться с корейскими названиями, обратитесь к разделу <a href="#" style="color:#FFD700;">ТЕРМИНОЛОГИЯ</a>.</p>
+
+                <div class="program-block">
+                    <p><strong>10 ГЫП</strong><br>
+                    1. Чучум соги арэ, момтон, ольгуль-макки, момтон- чаруги<br>
+                    2. Из чунби-соги: ап-соги пандэ арэ-макки, момтон, ольгуль-макки, пандэ-чаруги<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ап-куби пандэ арэ, момтон, ольгуль-макки, пандэ-чаруги<br>
+                    3. Из ап-соги: махи на ап-чаги в движении;<br>
+                    4. Из ап-соги: удары ап-чаги в движении</p>
+                    <p>(движения по схеме: 3 движения вперёд-разворот -3 движения назад, темп:1 движение на 1 счёт)</p>
+
+                    <p><strong>9 ГЫП</strong><br>
+                    1. Программа 10-го гыпа<br>
+                    2. 1-й пхумсэ (под счёт, темп: 1 движение на 1 счёт)</p>
+
+                    <p><strong>8 ГЫП</strong><br>
+                    1. Программа 10-го гыпа.<br>
+                    2. Из ап-соги: махи на ёп-чаги в движении;<br>
+                    3. 1-й пхумсэ</p>
+
+                    <p><strong>7 ГЫП</strong><br>
+                    1. Из чучум-соги выполняется момтон-чаруги, затем момтон дюбон чаруги;<br>
+                    2. Программа 10-го гыпа<br>
+                    3. Из ап-соги: махи на ёп-чаги в движении, удары долео-чаги в движении;<br>
+                    4. 1-й, 2-й пхумсэ</p>
+
+                    <p><strong>6 ГЫП</strong><br>
+                    1. Из чучум-соги выполняется момтон-чаруги, затем момтон дюбон чаруги;<br>
+                    2. Из Ап-куби: арэ-макки, монтон-пандэ-чаруги, пандэ-тын-чумок-чиги, ольгуль-макки, сонналь-мок-чиги;<br>
+                    3. Из Тит-куби: монтон-макки, монтон-баккат-макки, монтон-сонналь-макки;<br>
+                    4. Из Ап-куби: удары Ап-чаги, толео-чаги, махи на ёп-чаги в движении;<br>
+                    5. 1-й, 2-й, 3-й пхумсэ</p>
+                    <p>(движения по схеме: 3 движения вперёд-разворот -3 движения назад, темп:3 движения на 1 счёт)</p>
+
+                    <p><strong>5 ГЫП</strong><br>
+                    1. Программа 6-ого гыпа<br>
+                    2. Добавляется из Ап-куби: Ёп-чаги в движении.<br>
+                    3. 2-ой, 3-ий, 4-й пхумсэ</p>
+
+                    <p><strong>4 ГЫП</strong><br>
+                    1. Программа 5-ого гыпа<br>
+                    2. 3-ий, 4-ый, 5-й пхумсэ</p>
+
+                    <p><strong>3 ГЫП</strong><br>
+                    1. Программа 5-ого гыпа<br>
+                    2. 4-ый, 5-ый, 6-й пхумсэ</p>
+
+                    <p><strong>2 ГЫП</strong><br>
+                    1. Программа 5-ого гыпа<br>
+                    2. Добавляется из ап-соги: удары Хурео-чаги, Нерио-чаги в движении;<br>
+                    3. Хамбон-керуги<br>
+                    4. 5-ый,6-ой, 7-й пхумсэ</p>
+
+                    <p><strong>1 ГЫП</strong><br>
+                    1. Программа 2-ого гыпа<br>
+                    2. Добавляется из ап-соги: Титоро-ёп-чаги, Момдолео (Тит-хурео-чаги) в движении;<br>
+                    3. 6-й, 7-ой, 8-й пхумсэ<br>
+                    4. Сейбон-керуги<br>
+                    5. Кьок-па</p>
+                </div>
+
+                <h2 style="margin-top: 40px;">ПРАВИЛА АТТЕСТАЦИИ на ДАНЫ и ПУМЫ (мастерские степени)</h2>
+                <p>в соответствии с «Аттестационными правилами ВТФ»:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>пум/дан</th>
+                            <th>Минимальное время подготовки</th>
+                            <th>Возрастные пределы для аттестации начиная с дана</th>
+                            <th>Возрастные пределы для аттестации начиная с пума</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1 пум</td><td>-</td><td>-</td><td>моложе 15 лет</td></tr>
+                        <tr><td>с 1 на 2 пум</td><td>1 год</td><td>-</td><td>моложе 15 лет</td></tr>
+                        <tr><td>со 2 на 3 пум</td><td>2 года</td><td>-</td><td>моложе 15 лет</td></tr>
+                        <tr><td>с 3 на 4 пум</td><td>3 года</td><td>-</td><td>моложе 15 лет</td></tr>
+                        <tr><td>1 дан</td><td>-</td><td>15 лет и старше</td><td>-</td></tr>
+                        <tr style="background-color: #c0c0c0;"><td><strong>с 1 на 2 дан</strong></td><td><strong>1 год</strong></td><td><strong>16 лет и старше</strong></td><td><strong>15 лет и старше</strong></td></tr>
+                        <tr><td>со 2 на 3 дан</td><td>2 года</td><td>18 лет и старше</td><td>16 лет и старше</td></tr>
+                        <tr style="background-color: #c0c0c0;"><td><strong>с 3 на 4 дан</strong></td><td><strong>3 года</strong></td><td><strong>21 год и старше</strong></td><td><strong>18 лет и старше</strong></td></tr>
+                        <tr><td>с 4 на 5 дан</td><td>4 года</td><td>25 лет и старше</td><td>22 года и старше</td></tr>
+                        <tr style="background-color: #c0c0c0;"><td><strong>с 5 на 6 дан</strong></td><td><strong>5 лет</strong></td><td><strong>30 лет и старше</strong></td><td><strong>30 лет и старше</strong></td></tr>
+                        <tr><td>с 6 на 7 дан</td><td>6 лет</td><td>36 лет и старше</td><td>36 лет и старше</td></tr>
+                        <tr style="background-color: #c0c0c0;"><td><strong>с 7 на 8 дан</strong></td><td><strong>8 лет</strong></td><td><strong>44 года и старше</strong></td><td><strong>44 года и старше</strong></td></tr>
+                        <tr><td>с 8 на 9 дан</td><td>9 лет</td><td>53 года и старше</td><td>53 года и старше</td></tr>
+                        <tr><td>с 9 на 10 дан</td><td>-</td><td>60 лет и старше</td><td>60 лет и старше</td></tr>
+                    </tbody>
+                </table>
+                <p>*по материалам книги «Тхэквондо: теория и методика. Том1. Спортивное единоборство.» под ред. Ю.А. Шулики и Е.Ю.Ключникова.</p>
+            </div>
+
+            <!-- Раздел 2: Символика поясов -->
+            <div id="symbolics" class="section-block">
+                <h2>Символика поясов</h2>
+                <p>В тхэквондо цвета поясов символизируют ступени мастерства и философские аспекты пути воина.</p>
+                <ul>
+                    <li><strong>Белый пояс</strong> – символ чистоты, начала пути, незнания.</li>
+                    <li><strong>Жёлтый пояс</strong> – цвет земли, на которой прорастает семя знаний.</li>
+                    <li><strong>Зелёный пояс</strong> – цвет ростка, развитие и рост навыков.</li>
+                    <li><strong>Синий пояс</strong> – цвет неба, к которому устремляется растение.</li>
+                    <li><strong>Красный пояс</strong> – цвет огня, энергии и опасности, предупреждение о зрелости.</li>
+                    <li><strong>Чёрный пояс</strong> – объединяет все цвета, означает недосягаемость и глубину мастерства.</li>
+                </ul>
+                <p>Каждый цвет имеет своё значение и этап развития. Аттестация на новый пояс подтверждает прогресс ученика.</p>
+            </div>
+
+            <!-- Раздел 3: Основные стойки -->
+            <div id="stances" class="section-block">
+                <h2>Основные стойки</h2>
+                <p>В тхэквондо существует множество стоек. Вот наиболее важные:</p>
+                <ul>
+                    <li><strong>Чучум соги (Juchum sogi)</strong> – стойка всадника, ноги широко, колени согнуты.</li>
+                    <li><strong>Ап соги (Ap sogi)</strong> – короткая передняя стойка, ноги на ширине плеч.</li>
+                    <li><strong>Ап куби (Ap kubi)</strong> – длинная передняя стойка, передняя нога согнута, задняя прямая.</li>
+                    <li><strong>Тит куби (Tit kubi)</strong> – задняя стойка, вес на задней ноге.</li>
+                    <li><strong>Бом соги (Beom sogi)</strong> – стойка тигра.</li>
+                </ul>
+                <p>Каждая стойка применяется для определённых движений и блоков.</p>
+            </div>
+
+            <!-- Раздел 4: Символики Пхумсэ -->
+            <div id="poomsae" class="section-block">
+                <h2>Символики Пхумсэ</h2>
+                <p>Пхумсэ – это формальные комплексы движений, символизирующие борьбу с воображаемым противником. Каждый пхумсэ имеет своё название и философский смысл, часто связанный с корейской историей или понятиями.</p>
+                <p>Например:</p>
+                <ul>
+                    <li><strong>Тхэгук 1 чжан</strong> – символизирует небо и свет, начало всех вещей.</li>
+                    <li><strong>Тхэгук 2 чжан</strong> – олицетворяет радость и ясность.</li>
+                    <li><strong>Тхэгук 3 чжан</strong> – символизирует огонь и солнце.</li>
+                </ul>
+                <p>Всего существует 8 пхумсэ Тхэгук для цветных поясов и 9 пхумсэ Юдан для черных поясов.</p>
+            </div>
+
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> На главную</a>
+        </div>
     </div>
+
+    <!-- Скрипт для подсветки активного пункта меню при прокрутке -->
+    <script>
+        // Подсветка активного раздела в меню
+        const sections = document.querySelectorAll('.section-block');
+        const navLinks = document.querySelectorAll('.section-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href').substring(1);
+                if (href === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -7,112 +7,96 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Yuji+Mai&display=swap" rel="stylesheet">
     <style>
+        /* ===== СБРОС И ПЕРЕМЕННЫЕ (как было) ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         :root {
-            --gold: #FFD700;
-            --red: #8B0000;
-            --black: #000000;
-            --bg-dark: #0a0a0a;
-            --text-light: #eee;
-            --text-lighter: #aaa;
+            --primary: #111111;
+            --secondary: #8B0000;
+            --accent: #2F4F4F;
+            --light: #F8F8F8;
+            --paper: #FAF3E8;
+            --text: #222222;
+            --text-light: #666666;
+            --border: #E0D6C9;
+            --gold: #B8860B;
         }
         html {
             scroll-behavior: smooth;
         }
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.8;
+            color: var(--text);
+            background-color: var(--paper);
+            letter-spacing: 0.02em;
             overflow-x: hidden;
-            position: relative;
-        }
-        /* Фоновые иероглифы */
-        .bg-kanji {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .bg-kanji span {
-            position: absolute;
-            font-size: 180px;
-            font-weight: 900;
-            color: rgba(255, 215, 0, 0.03);
-            white-space: nowrap;
-            font-family: 'Arial Black', sans-serif;
-            transform: rotate(-15deg);
-        }
-        .bg-kanji span:nth-child(1) { top: 5%; left: 2%; }
-        .bg-kanji span:nth-child(2) { top: 20%; left: 80%; }
-        .bg-kanji span:nth-child(3) { bottom: 10%; left: 10%; }
-        .bg-kanji span:nth-child(4) { bottom: 30%; right: 5%; }
-        .bg-kanji span:nth-child(5) { top: 50%; left: 40%; font-size: 300px; color: rgba(139,0,0,0.05); }
-        .big-do {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 400px;
-            font-family: 'Arial Black', sans-serif;
-            color: rgba(139,0,0,0.08);
-            transform: rotate(-10deg);
-            z-index: 0;
-            pointer-events: none;
         }
         .container {
-            position: relative;
-            z-index: 2;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
+
+        /* ===== ТИПОГРАФИЯ ===== */
         h1, h2, h3, h4 {
             font-family: 'Noto Serif JP', serif;
             font-weight: 600;
             line-height: 1.3;
+            letter-spacing: 0.05em;
         }
         h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: var(--gold);
-            margin-bottom: 1rem;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
         }
         h2 {
-            font-size: clamp(2rem, 6vw, 3rem);
-            color: var(--gold);
-            margin-bottom: 2rem;
+            font-size: 3rem;
+            margin-bottom: 3rem;
             position: relative;
         }
         h2:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 0;
             width: 80px;
             height: 3px;
-            background-color: var(--gold);
+            background-color: var(--primary);
         }
-        .section-title-full:after {
+        .section-title-full:after,
+        .full-underline:after {
             width: 100% !important;
         }
-        p {
-            color: var(--text-lighter);
+        h3 {
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
         }
+        .kanji {
+            font-family: 'Yuji Mai', serif;
+            font-weight: 400;
+        }
+        .hangul {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 700;
+        }
+        p {
+            margin-bottom: 1.8rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* ===== ШАПКА ===== */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0,0,0,0.9);
+            background-color: rgba(248, 248, 248, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid var(--red);
+            border-bottom: 1px solid var(--border);
             padding: 10px 0;
             height: 70px;
         }
@@ -129,8 +113,8 @@
         .logo-kanji {
             font-family: 'Yuji Mai', serif;
             font-size: 2.5rem;
-            color: var(--gold);
-            margin-right: 10px;
+            color: var(--primary);
+            margin-right: 15px;
             writing-mode: vertical-rl;
             text-orientation: upright;
             letter-spacing: -10px;
@@ -140,37 +124,43 @@
             flex-direction: column;
         }
         .logo-main {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 0.1em;
+            color: var(--primary);
+            letter-spacing: 0.2em;
         }
         .logo-sub {
-            font-size: 0.8rem;
-            color: var(--text-lighter);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
         }
+
+        /* ===== БУРГЕР-КНОПКА ===== */
         .burger-btn {
             background: none;
             border: none;
             font-size: 2rem;
-            color: var(--gold);
+            color: var(--primary);
             cursor: pointer;
             z-index: 1001;
+            transition: color 0.3s;
         }
         .burger-btn:hover {
-            color: var(--red);
+            color: var(--secondary);
         }
+
+        /* ===== ВЫДВИЖНОЕ МЕНЮ ===== */
         .menu-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.7);
             z-index: 2000;
             opacity: 0;
             visibility: hidden;
-            transition: 0.3s;
+            transition: opacity 0.3s, visibility 0.3s;
         }
         .menu-overlay.active {
             opacity: 1;
@@ -186,9 +176,10 @@
             color: #fff;
             z-index: 2001;
             overflow-y: auto;
-            transition: left 0.3s;
+            transition: left 0.3s ease;
             padding: 20px 15px;
-            border-right: 1px solid var(--red);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+            border-right: 1px solid var(--secondary);
         }
         .side-menu.active {
             left: 0;
@@ -197,19 +188,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--red);
+            border-bottom: 1px solid var(--secondary);
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        .side-menu .menu-logo {
+        .side-menu .menu-header .menu-logo {
             font-size: 1.8rem;
             font-weight: 900;
-            color: var(--gold);
+            color: #FFD700;
         }
-        .close-btn {
+        .side-menu .close-btn {
             background: none;
             border: none;
-            color: var(--gold);
+            color: #FFD700;
             font-size: 1.8rem;
             cursor: pointer;
         }
@@ -225,19 +216,35 @@
             text-decoration: none;
             padding: 8px 10px;
             border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+            font-size: 0.95rem;
         }
         .side-menu a:hover {
-            background: var(--red);
-            color: var(--gold);
+            background: var(--secondary);
+            color: #FFD700;
         }
-        /* ГЛАВНЫЙ ЭКРАН */
+        .side-menu .has-submenu > a {
+            font-weight: bold;
+            color: #FFD700;
+        }
+        .side-menu .submenu {
+            margin-left: 15px;
+            border-left: 1px solid var(--secondary);
+            padding-left: 10px;
+        }
+        .side-menu .submenu a {
+            font-size: 0.85rem;
+            padding: 5px 10px;
+        }
+
+        /* ===== ГЛАВНЫЙ ЭКРАН ===== */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            padding-top: 100px;
-            padding-bottom: 40px;
+            overflow: hidden;
+            padding-top: 210px;
         }
         .hero-bg {
             position: absolute;
@@ -245,79 +252,100 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1627483262116-0a8c0a8e0b8f?auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(90deg, rgba(250,243,232,0.95) 0%, rgba(250,243,232,0.85) 100%),
+                        url('https://images.unsplash.com/photo-1627483262116-0a8c0a8e0b8f?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
             z-index: -1;
         }
         .hero-content {
-            max-width: 800px;
+            width: 60%;
+            position: relative;
+            z-index: 5;
         }
         .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            color: var(--gold);
-            margin-bottom: 1.5rem;
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
         }
         .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background-color: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            border: 2px solid var(--primary);
+            border-radius: 0;
+            font-weight: 600;
             font-size: 1.1rem;
-            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+        .btn:hover {
+            color: var(--paper);
+        }
+        .btn:hover:before {
+            left: 0;
+        }
+        .btn-outline {
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
         }
         .hero-buttons {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 40px;
         }
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background: transparent;
-            color: var(--gold);
-            border: 2px solid var(--gold);
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-            text-align: center;
-        }
-        .btn:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-        .btn-outline {
-            border-color: var(--red);
-            color: var(--gold);
-        }
-        .btn-outline:hover {
-            background: var(--red);
-            color: var(--gold);
-        }
-        /* ВИДЕО */
-        .video-section, .trainers-section, .callback-section, 
-        .path-section, .philosophy-section, .gallery-section, 
-        .schedule-section, .contacts-section {
-            padding: 80px 0;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-            margin: 20px 0;
-            border-radius: 10px;
+
+        /* ===== ВИДЕО ===== */
+        .video-section {
+            padding: 150px 0;
+            background-color: white;
         }
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
         .video-card {
-            border: 1px solid var(--red);
-            padding: 20px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
         .video-container {
+            position: relative;
             width: 100%;
-            height: 250px;
+            height: 300px;
             background: #000;
-            margin-bottom: 15px;
-            border: 1px solid var(--red);
+            margin-bottom: 20px;
             border-radius: 5px;
             overflow: hidden;
         }
@@ -326,93 +354,223 @@
             height: 100%;
             border: 0;
         }
+
+        /* ===== ТРЕНЕРЫ ===== */
+        .trainers-section {
+            padding: 150px 0;
+            background-color: white;
+        }
         .trainers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
         .trainer-card {
-            border: 1px solid var(--red);
-            padding: 20px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
             text-align: center;
         }
         .trainer-photo {
-            width: 160px;
-            height: 200px;
-            margin: 0 auto 20px;
-            border: 3px solid var(--red);
-            border-radius: 5px;
+            width: 180px;
+            height: 240px;
+            margin: 0 auto 30px;
             overflow: hidden;
+            border-radius: 5px;
+            border: 3px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .trainer-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .trainer-rank {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
         }
         .trainer-name {
-            font-size: 1.5rem;
-            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .trainer-title {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+        .trainer-contact {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 20px;
         }
         .trainer-achievements {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(139,0,0,0.05);
+            border-left: 3px solid var(--secondary);
             text-align: left;
-            margin-top: 15px;
-            background: rgba(139,0,0,0.1);
-            padding: 15px;
-            border-left: 3px solid var(--red);
         }
         .achievement-list {
             list-style: none;
         }
         .achievement-list li {
-            margin-bottom: 5px;
-            padding-left: 15px;
+            margin-bottom: 10px;
+            padding-left: 20px;
             position: relative;
         }
         .achievement-list li:before {
             content: "•";
-            color: var(--gold);
+            color: var(--secondary);
             position: absolute;
             left: 0;
+            font-weight: bold;
         }
-        /* ФОРМА */
-        .callback-section input {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid var(--red);
-            color: var(--text-light);
-            border-radius: 5px;
-            margin-bottom: 20px;
+
+        /* ===== ПУТЬ ===== */
+        .path-section {
+            padding: 150px 0;
+            background-color: white;
         }
-        .callback-section .btn {
-            min-width: 200px;
+        .path-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
-        /* ГАЛЕРЕЯ (слайдеры) */
+        .path-kanji {
+            font-family: 'Yuji Mai', serif;
+            font-size: 25rem;
+            color: rgba(139,0,0,0.1);
+            text-align: center;
+            line-height: 1;
+        }
+        .path-content {
+            padding-right: 40px;
+        }
+        .path-title {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 2rem;
+        }
+        .path-hangul {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-right: 15px;
+        }
+        .meaning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .meaning-item {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .meaning-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        .meaning-char {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* ===== ФИЛОСОФИЯ ===== */
+        .philosophy-section {
+            padding: 150px 0;
+            background-color: var(--paper);
+        }
+        .philosophy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .philosophy-quote {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2.2rem;
+            line-height: 1.6;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            padding: 0 40px;
+            position: relative;
+        }
+        .philosophy-quote:before,
+        .philosophy-quote:after {
+            content: "「";
+            font-family: 'Noto Serif JP', serif;
+            font-size: 4rem;
+            color: var(--border);
+            position: absolute;
+            top: -20px;
+            left: 0;
+        }
+        .philosophy-quote:after {
+            content: "」";
+            left: auto;
+            right: 0;
+        }
+        .philosophy-text {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+
+        /* ===== ГАЛЕРЕЯ ===== */
+        .gallery-section {
+            padding: 150px 0;
+            background-color: var(--paper);
+        }
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
         .album-card {
-            border: 1px solid var(--red);
-            background: rgba(0,0,0,0.6);
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
             overflow: hidden;
         }
+        .album-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        .album-content {
+            padding: 30px;
+        }
+        .album-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* ===== СЛАЙДЕР ===== */
         .slider-container {
             position: relative;
-            height: 200px;
+            width: 100%;
+            height: 250px;
             overflow: hidden;
-            border-bottom: 1px solid var(--red);
+            background-color: #000;
+            touch-action: pan-y;
         }
         .slider-wrapper {
             display: flex;
+            transition: transform 0.3s ease-out;
             height: 100%;
-            transition: transform 0.3s;
+            width: 100%;
         }
         .slide {
             min-width: 100%;
@@ -422,128 +580,260 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
         }
         .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background: rgba(0,0,0,0.7);
-            color: var(--gold);
-            border: 1px solid var(--red);
-            width: 30px;
-            height: 30px;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
+            font-size: 1.5rem;
             z-index: 10;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
         }
-        .prev-btn { left: 5px; }
-        .next-btn { right: 5px; }
+        .slider-btn:hover {
+            background: rgba(139,0,0,0.8);
+        }
+        .prev-btn {
+            left: 10px;
+        }
+        .next-btn {
+            right: 10px;
+        }
         .slider-dots {
             position: absolute;
-            bottom: 5px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 5px;
+            gap: 8px;
+            z-index: 10;
         }
         .dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255,255,255,0.5);
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-        .dot.active { background: var(--gold); }
-        .album-content {
-            padding: 20px;
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
         }
-        .album-icon { font-size: 2rem; color: var(--red); }
-        /* РАСПИСАНИЕ */
+
+        /* ===== РАСПИСАНИЕ ===== */
+        .schedule-section {
+            padding: 150px 0;
+            background-color: var(--paper);
+        }
         .location-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
         .location-card {
-            border: 1px solid var(--red);
-            padding: 20px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            padding: 40px;
             position: relative;
         }
         .location-number {
             position: absolute;
-            top: -15px;
-            left: 20px;
-            background: var(--black);
-            color: var(--gold);
-            padding: 0 10px;
-            border: 1px solid var(--red);
-            border-radius: 20px;
-            font-size: 1.2rem;
+            top: -20px;
+            left: 40px;
+            background-color: var(--paper);
+            color: var(--primary);
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.5rem;
+            padding: 0 15px;
+        }
+        .location-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        .location-address {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
         }
         .schedule-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--red);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
         }
-        .schedule-item:last-child { border-bottom: none; }
-        .schedule-time { color: var(--gold); }
-        /* КОНТАКТЫ */
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        .schedule-day {
+            font-weight: 500;
+        }
+        .schedule-time {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        .schedule-group {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* ===== КОНТАКТЫ ===== */
+        .contacts-section {
+            padding: 150px 0;
+            background-color: white;
+        }
         .contacts-container {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
+        .contact-info {
+            margin: 60px 0;
+        }
         .contact-item {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        .contact-label {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: 0.1em;
         }
         .contact-value {
-            font-size: 1.5rem;
-            color: var(--gold);
+            font-size: 1.8rem;
+            color: var(--text);
         }
-        /* ПОДВАЛ */
+        .contact-note {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        /* ===== ПОДВАЛ ===== */
         footer {
-            background: var(--black);
-            color: var(--text-lighter);
-            padding: 60px 0 20px;
-            border-top: 2px solid var(--red);
+            background-color: var(--primary);
+            color: var(--paper);
+            padding: 80px 0 40px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
         }
         .footer-logo {
             text-align: center;
-            margin-bottom: 30px;
+            width: 100%;
         }
-        .footer-logo .logo-main { color: var(--gold); }
-        .footer-logo .logo-sub { color: rgba(255,255,255,0.5); }
+        .footer-logo .logo {
+            justify-content: center;
+        }
+        .footer-logo .logo-text {
+            align-items: center;
+        }
+        .footer-logo .logo-main {
+            color: var(--paper);
+        }
+        .footer-logo .logo-sub {
+            color: rgba(248,248,248,0.7);
+        }
         .footer-kanji {
+            font-family: 'Yuji Mai', serif;
             font-size: 3rem;
-            color: rgba(139,0,0,0.3);
-            text-align: center;
+            color: rgba(248,248,248,0.2);
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: -15px;
         }
         .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(139,0,0,0.3);
-            font-size: 0.8rem;
+            padding-top: 40px;
+            border-top: 1px solid rgba(248,248,248,0.1);
+            color: rgba(248,248,248,0.5);
+            font-size: 0.9rem;
         }
-        /* АДАПТИВНОСТЬ */
+
+        /* ===== ФОРМА ЗАПИСИ ===== */
+        .callback-section {
+            background: white;
+            padding: 80px 0;
+        }
+        .callback-section input {
+            padding: 15px 20px;
+            border: 1px solid var(--border);
+            font-size: 1.1rem;
+            font-family: inherit;
+            width: 100%;
+        }
+        .callback-section .btn {
+            align-self: center;
+            min-width: 250px;
+        }
+
+        /* ===== АДАПТИВНОСТЬ (ДЛЯ ВСЕХ УСТРОЙСТВ) ===== */
+        @media (max-width: 1200px) {
+            .container { padding: 0 30px; }
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+            .hero-content { width: 70%; }
+            .path-kanji { font-size: 20rem; }
+        }
+        @media (max-width: 992px) {
+            .hero { padding-top: 210px; height: auto; min-height: 100vh; }
+            .hero-content { width: 100%; text-align: center; }
+            .hero-subtitle { margin-left: auto; margin-right: auto; }
+            .path-grid { grid-template-columns: 1fr; gap: 60px; }
+            .path-kanji { font-size: 15rem; order: -1; }
+            .path-content { padding-right: 0; }
+            .video-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2,1fr); }
+        }
         @media (max-width: 768px) {
-            .hero { padding-top: 120px; }
-            .hero-buttons { flex-direction: column; align-items: stretch; }
-            .btn { width: 100%; text-align: center; }
-            .video-container { height: 200px; }
-            .trainer-photo { width: 120px; height: 150px; }
-            .gallery-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 20px; }
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+            .hero { padding-top: 330px; } /* Увеличено, чтобы кнопка не уходила под шапку */
+            .hero-title { font-size: 3.5rem; }
+            .hero-buttons { justify-content: center; }
+            .btn { padding: 15px 30px; width: 100%; max-width: 300px; }
+            .meaning-grid { grid-template-columns: 1fr; }
+            .trainers-grid,
             .location-cards { grid-template-columns: 1fr; }
+            .path-kanji { font-size: 12rem; }
+            .philosophy-quote { font-size: 1.8rem; padding: 0 20px; }
+            .footer-content { flex-direction: column; gap: 40px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .slider-container { height: 200px; }
+            .slider-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+            .slider-dots { bottom: 10px; }
+        }
+        @media (max-width: 576px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .hero-title { font-size: 2.5rem; }
+            .btn { padding: 12px 25px; }
+            .path-kanji { font-size: 8rem; }
+            section { padding: 100px 0; }
+            .video-container { height: 200px; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-kanji">
-        <span>태권도</span> <span>跆拳道</span> <span>武</span> <span>道</span> <span>태권</span>
-    </div>
-    <div class="big-do">道</div>
-
+    <!-- ШАПКА -->
     <header>
         <div class="container header-container">
             <a href="#" class="logo">
@@ -553,10 +843,13 @@
                     <div class="logo-sub">ТХЭКВОНДО КЛУБ</div>
                 </div>
             </a>
-            <button class="burger-btn" id="burgerBtn"><i class="fas fa-bars"></i></button>
+            <button class="burger-btn" id="burgerBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
+    <!-- ВЫДВИЖНОЕ МЕНЮ -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
@@ -572,16 +865,23 @@
             <li><a href="#schedule">Расписание</a></li>
             <li><a href="#callback">Записаться</a></li>
             <li><a href="#contacts">Контакты</a></li>
-            <li><a href="attestation.html">Аттестация</a></li>
+            <li><a href="attestation.html">Аттестация на пояса</a></li>
         </ul>
     </div>
 
+    <!-- ГЛАВНЫЙ ЭКРАН -->
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Путь начинается<br><span class="kanji">ここ</span>に</h1>
-                <p class="hero-subtitle">Искусство тхэквондо — это не просто боевое мастерство. Это путь самосовершенствования, дисциплины и гармонии.</p>
+                <h1 class="hero-title">
+                    Путь начинается<br>
+                    <span class="kanji">ここ</span>に
+                </h1>
+                <p class="hero-subtitle">
+                    Искусство тхэквондо — это не просто боевое мастерство. 
+                    Это путь самосовершенствования, дисциплины и гармонии тела с духом.
+                </p>
                 <div class="hero-buttons">
                     <a href="https://t.me/FastSafe1" target="_blank" class="btn">🚀 Начать путь в Telegram</a>
                     <a href="#schedule" class="btn btn-outline">📅 Расписание</a>
@@ -590,52 +890,89 @@
         </div>
     </section>
 
+    <!-- ВИДЕО – СЛОВО ТРЕНЕРА -->
     <section class="video-section" id="video">
         <div class="container">
             <h2 class="section-title-full">Слово тренера</h2>
             <div class="video-grid">
+                <!-- ВИДЕО ДЛЯ ШКОЛЬНИКОВ -->
                 <div class="video-card">
-                    <div class="video-container"><iframe src="https://rutube.ru/play/embed/227f2e8d5a2f642563347f101bc21ff7" allowfullscreen></iframe></div>
-                    <h3>Родителям школьников (7-17 лет)</h3>
-                    <p>Главный тренер Вячеслав Пырх рассказывает о том, как занятия тхэквондо помогают в учёбе.</p>
+                    <div class="video-container">
+                        <iframe 
+                            src="https://rutube.ru/play/embed/227f2e8d5a2f642563347f101bc21ff7"
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Родителям школьников (7-17 лет)</h3>
+                        <p><strong>Главный тренер Вячеслав Пырх</strong> рассказывает о том, как занятия тхэквондо помогают в учёбе и взрослении.</p>
+                    </div>
                 </div>
+                <!-- ВИДЕО ДЛЯ ДОШКОЛЬНИКОВ -->
                 <div class="video-card">
-                    <div class="video-container"><iframe src="https://rutube.ru/play/embed/f2fc5714e3be1ae288f61a63aedbeaa2" allowfullscreen></iframe></div>
-                    <h3>Для родителей дошкольников (4-6 лет)</h3>
-                    <p>Особенности подхода к самым юным ученикам.</p>
+                    <div class="video-container">
+                        <iframe 
+                            src="https://rutube.ru/play/embed/f2fc5714e3be1ae288f61a63aedbeaa2"
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Для родителей дошкольников (4-6 лет)</h3>
+                        <p><strong>Тренер</strong> объясняет особенности подхода к самым юным ученикам.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ТРЕНЕРЫ -->
     <section class="trainers-section" id="trainers">
         <div class="container">
             <h2 class="section-title-full">Наши тренеры</h2>
             <div class="trainers-grid">
+                <!-- ПЫРХ ВЯЧЕСЛАВ АЛЕКСАНДРОВИЧ -->
                 <div class="trainer-card">
-                    <div class="trainer-photo"><img src="https://i.ibb.co/jPmFnDFt/pyrh.jpg" alt="Пырх" class="trainer-img"></div>
+                    <div class="trainer-photo">
+                        <img src="https://i.ibb.co/jPmFnDFt/pyrh.jpg" alt="Пырх Вячеслав Александрович" class="trainer-img">
+                    </div>
                     <div class="trainer-rank">5 дан • КМС</div>
-                    <h3 class="trainer-name">Пырх Вячеслав</h3>
+                    <h3 class="trainer-name">Пырх Вячеслав Александрович</h3>
                     <div class="trainer-title">Главный тренер</div>
                     <div class="trainer-achievements">
                         <h4>Достижения:</h4>
                         <ul class="achievement-list">
-                            <li>Тренер-преподаватель II категории</li>
-                            <li>5-ый дан</li>
-                            <li>КМС</li>
-                            <li>Победитель Чемпионата Дальнего Востока</li>
-                            <li>Бронзовый призёр Чемпионата Кореи</li>
+                            <li>Тренер-преподаватель второй категории</li>
+                            <li>5-ый дан по тхэквондо</li>
+                            <li>Кандидат в Мастера спорта</li>
+                            <li>Неоднократный победитель Чемпионата Дальнего Востока</li>
+                            <li>Победитель Чемпионата Приморского края (керуги)</li>
+                            <li>Бронзовый призёр Открытого Чемпионата Кореи</li>
+                            <li>Участник I Летней спартакиады молодежи России (2006, Ханты-Мансийск)</li>
+                            <li>Судья по спорту</li>
+                            <li>Тренер отделения тхэквондо ВТФ МБУ СП СШ "Высота" г. Владивостока</li>
                         </ul>
                     </div>
                     <div class="trainer-contact"><i class="fas fa-phone"></i> 8 (964) 440-35-01</div>
                 </div>
+                <!-- СМОЛИН СЕРАФИМ СЕРГЕЕВИЧ -->
                 <div class="trainer-card">
-                    <div class="trainer-photo"><img src="https://i.ibb.co/ZRK6jkm3/smolin.jpg" alt="Смолин" class="trainer-img"></div>
+                    <div class="trainer-photo">
+                        <img src="https://i.ibb.co/ZRK6jkm3/smolin.jpg" alt="Смолин Серафим Сергеевич" class="trainer-img">
+                    </div>
                     <div class="trainer-rank">1 дан • Капитан команды</div>
-                    <h3 class="trainer-name">Смолин Серафим</h3>
+                    <h3 class="trainer-name">Смолин Серафим Сергеевич</h3>
                     <div class="trainer-title">Второй тренер</div>
                     <div class="trainer-achievements">
-                        <p>Опытный спортсмен, специалист по работе со старшими группами.</p>
+                        <h4>О тренере:</h4>
+                        <p>Опытный спортсмен и тренер, специализирующийся на работе со старшими группами.</p>
                     </div>
                     <div class="trainer-contact"><i class="fas fa-phone"></i> 8 (952) 082-72-06</div>
                 </div>
@@ -643,135 +980,446 @@
         </div>
     </section>
 
+    <!-- ФОРМА ЗАПИСИ -->
     <section class="callback-section" id="callback">
         <div class="container">
-            <h2 class="section-title-full" style="text-align:center">Записаться на тренировку</h2>
-            <div style="max-width:600px; margin:0 auto;">
-                <form id="tgForm">
-                    <input type="text" name="name" placeholder="Ваше имя" required>
-                    <input type="tel" name="phone" placeholder="Номер телефона" required>
-                    <button type="submit" class="btn" style="width:100%">📩 Отправить заявку</button>
-                    <p style="font-size:0.8rem; margin-top:10px;">Нажимая «Отправить», вы даёте согласие на обработку персональных данных.</p>
+            <h2 class="section-title-full" style="text-align: center;">Записаться на тренировку</h2>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form id="tgForm" style="display: flex; flex-direction: column; gap: 20px;">
+                    <input type="text" name="name" placeholder="Ваше имя" required 
+                           style="padding: 15px 20px; border: 1px solid var(--border); font-size: 1.1rem; font-family: inherit;">
+                    <input type="tel" name="phone" placeholder="Номер телефона" required 
+                           style="padding: 15px 20px; border: 1px solid var(--border); font-size: 1.1rem; font-family: inherit;">
+                    <button type="submit" class="btn" style="align-self: center; min-width: 250px;">
+                        📩 Отправить заявку
+                    </button>
+                    <p style="font-size: 0.9rem; color: var(--text-light); text-align: center;">
+                        Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
+                    </p>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- ПУТЬ НОГИ И КУЛАКА -->
     <section class="path-section" id="path">
         <div class="container">
-            <div class="path-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:center;">
-                <div class="path-kanji" style="font-size:15rem; text-align:center; color:rgba(139,0,0,0.2);">道</div>
-                <div>
-                    <h2 class="section-title-full">Путь ноги и кулака</h2>
-                    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin:30px 0;">
-                        <div style="text-align:center"><span style="font-size:3rem; color:var(--gold);">태</span><h3>Тхэ</h3><p>Нога</p></div>
-                        <div style="text-align:center"><span style="font-size:3rem; color:var(--gold);">권</span><h3>Квон</h3><p>Кулак</p></div>
-                        <div style="text-align:center"><span style="font-size:3rem; color:var(--gold);">도</span><h3>До</h3><p>Путь</p></div>
+            <div class="path-grid">
+                <div class="path-kanji">道</div>
+                <div class="path-content">
+                    <div class="path-title">
+                        <div class="path-hangul">태권도</div>
+                        <h2 class="section-title-full">Путь ноги и кулака</h2>
+                    </div>
+                    <div class="meaning-grid">
+                        <div class="meaning-item">
+                            <div class="meaning-char">태</div>
+                            <h3>Тхэ</h3>
+                            <p>Нога, стопа, удары ногами<br>Символизирует преодоление</p>
+                        </div>
+                        <div class="meaning-item">
+                            <div class="meaning-char">권</div>
+                            <h3>Квон</h3>
+                            <p>Кулак, удары рукой<br>Символизирует силу духа</p>
+                        </div>
+                        <div class="meaning-item">
+                            <div class="meaning-char">도</div>
+                            <h3>До</h3>
+                            <p>Путь, искусство, метод<br>Путь длиною в жизнь</p>
+                        </div>
                     </div>
                     <h3>Что такое До (道)?</h3>
-                    <p>До — это не просто путь, а непрерывный процесс самосовершенствования и гармонии.</p>
+                    <p><strong>До</strong> — это не просто «путь». Это непрерывный процесс самосовершенствования, духовного роста и гармонии с миром.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ФИЛОСОФИЯ ПУТИ -->
     <section class="philosophy-section" id="philosophy">
         <div class="container">
-            <h2 class="section-title-full">Философия пути</h2>
-            <div style="max-width:800px; margin:0 auto; text-align:center;">
-                <div style="font-size:1.8rem; color:var(--gold); margin:30px 0;">«Путь в тысячу миль начинается с первого шага. Но настоящий путь — это глубина каждого шага.»</div>
-                <p>Тхэквондо учит жить. Каждая тренировка — медитация в движении.</p>
+            <div class="philosophy-container">
+                <h2 class="section-title-full">Философия пути</h2>
+                <div class="philosophy-quote">
+                    Путь в тысячу миль начинается с первого шага. Но настоящий путь — это не расстояние, 
+                    а глубина каждого шага.
+                </div>
+                <div class="philosophy-text">
+                    <p>Тхэквондо учит жить. Каждая тренировка — это медитация в движении.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ГАЛЕРЕЯ -->
     <section class="gallery-section" id="gallery">
         <div class="container">
             <h2 class="section-title-full">Наша жизнь в фотографиях</h2>
             <div class="gallery-grid">
+                <!-- ТРЕНИРОВКИ – 12 ФОТО -->
                 <div class="album-card">
-                    <div class="slider-container" id="training-slider"><div class="slider-wrapper">[слайды будут добавлены скриптом]</div></div>
-                    <div class="album-content"><span class="album-icon">🏋️</span><h3>Тренировочный процесс</h3><p>12 фото</p></div>
+                    <div class="slider-container" id="training-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide active"><img src="https://i.ibb.co/XrDvqktW/training1.jpg" alt="Тренировка 1"></div>
+                            <div class="slide"><img src="https://i.ibb.co/0RmmJF8C/training2.jpg" alt="Тренировка 2"></div>
+                            <div class="slide"><img src="https://i.ibb.co/zVqchMBr/training3.jpg" alt="Тренировка 3"></div>
+                            <div class="slide"><img src="https://i.ibb.co/r2T4P443/training4.jpg" alt="Тренировка 4"></div>
+                            <div class="slide"><img src="https://i.ibb.co/9mVS38r6/training5.jpg" alt="Тренировка 5"></div>
+                            <div class="slide"><img src="https://i.ibb.co/qMz7vHLd/training6.jpg" alt="Тренировка 6"></div>
+                            <div class="slide"><img src="https://i.ibb.co/WbmbvHZ/training7.jpg" alt="Тренировка 7"></div>
+                            <div class="slide"><img src="https://i.ibb.co/MkdP872n/training8.jpg" alt="Тренировка 8"></div>
+                            <div class="slide"><img src="https://i.ibb.co/XrLMDBPX/training9.jpg" alt="Тренировка 9"></div>
+                            <div class="slide"><img src="https://i.ibb.co/fY4kJ9Np/training10.jpg" alt="Тренировка 10"></div>
+                            <div class="slide"><img src="https://i.ibb.co/v63WLj8y/training11.jpg" alt="Тренировка 11"></div>
+                            <div class="slide"><img src="https://i.ibb.co/xSWbpVJZ/training12.jpg" alt="Тренировка 12"></div>
+                        </div>
+                        <button class="slider-btn prev-btn">&lt;</button>
+                        <button class="slider-btn next-btn">&gt;</button>
+                        <div class="slider-dots">
+                            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
+                    </div>
+                    <div class="album-content">
+                        <div class="album-icon">🏋️</div>
+                        <h3>Тренировочный процесс</h3>
+                        <p>Листайте 12 фото ➡️</p>
+                    </div>
                 </div>
+                <!-- АТТЕСТАЦИИ – 11 ФОТО -->
                 <div class="album-card">
-                    <div class="slider-container" id="attestation-slider"><div class="slider-wrapper"></div></div>
-                    <div class="album-content"><span class="album-icon">🎖️</span><h3>Аттестация на пояса</h3><p>11 фото</p></div>
+                    <div class="slider-container" id="attestation-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide active"><img src="https://i.ibb.co/Kck03r48/attestation1.jpg" alt="Аттестация 1"></div>
+                            <div class="slide"><img src="https://i.ibb.co/nN40QRGS/attestation2.jpg" alt="Аттестация 2"></div>
+                            <div class="slide"><img src="https://i.ibb.co/gL3PNYRD/attestation3.jpg" alt="Аттестация 3"></div>
+                            <div class="slide"><img src="https://i.ibb.co/QFM7X704/attestation4.jpg" alt="Аттестация 4"></div>
+                            <div class="slide"><img src="https://i.ibb.co/0p1t57cH/attestation5.jpg" alt="Аттестация 5"></div>
+                            <div class="slide"><img src="https://i.ibb.co/PG2kwdN2/attestation6.jpg" alt="Аттестация 6"></div>
+                            <div class="slide"><img src="https://i.ibb.co/6cpLq3GY/attestation7.jpg" alt="Аттестация 7"></div>
+                            <div class="slide"><img src="https://i.ibb.co/39Fd3BPn/attestation8.jpg" alt="Аттестация 8"></div>
+                            <div class="slide"><img src="https://i.ibb.co/QjQCSxYn/attestation9.jpg" alt="Аттестация 9"></div>
+                            <div class="slide"><img src="https://i.ibb.co/hjMJ31Y/attestation10.jpg" alt="Аттестация 10"></div>
+                            <div class="slide"><img src="https://i.ibb.co/whzb8f6L/attestation11.jpg" alt="Аттестация 11"></div>
+                        </div>
+                        <button class="slider-btn prev-btn">&lt;</button>
+                        <button class="slider-btn next-btn">&gt;</button>
+                        <div class="slider-dots">
+                            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span>
+                        </div>
+                    </div>
+                    <div class="album-content">
+                        <div class="album-icon">🎖️</div>
+                        <h3>Аттестация на пояса</h3>
+                        <p>Листайте 11 фото ➡️</p>
+                    </div>
                 </div>
+                <!-- СОРЕВНОВАНИЯ – 9 ФОТО -->
                 <div class="album-card">
-                    <div class="slider-container" id="competition-slider"><div class="slider-wrapper"></div></div>
-                    <div class="album-content"><span class="album-icon">🥇</span><h3>Соревнования</h3><p>9 фото</p></div>
+                    <div class="slider-container" id="competition-slider">
+                        <div class="slider-wrapper">
+                            <div class="slide active"><img src="https://i.ibb.co/RpzMK3ky/competition1.jpg" alt="Соревнование 1"></div>
+                            <div class="slide"><img src="https://i.ibb.co/mVZXfMkJ/competition2.jpg" alt="Соревнование 2"></div>
+                            <div class="slide"><img src="https://i.ibb.co/FLKLsqzX/competition3.jpg" alt="Соревнование 3"></div>
+                            <div class="slide"><img src="https://i.ibb.co/hFqJLn5t/competition4.jpg" alt="Соревнование 4"></div>
+                            <div class="slide"><img src="https://i.ibb.co/dJsSXcs2/competition5.jpg" alt="Соревнование 5"></div>
+                            <div class="slide"><img src="https://i.ibb.co/fGCRZb1Q/competition6.jpg" alt="Соревнование 6"></div>
+                            <div class="slide"><img src="https://i.ibb.co/LzZLDgc7/competition7.jpg" alt="Соревнование 7"></div>
+                            <div class="slide"><img src="https://i.ibb.co/wFL204TF/competition8.jpg" alt="Соревнование 8"></div>
+                            <div class="slide"><img src="https://i.ibb.co/nNmt2GFf/competition9.jpg" alt="Соревнование 9"></div>
+                        </div>
+                        <button class="slider-btn prev-btn">&lt;</button>
+                        <button class="slider-btn next-btn">&gt;</button>
+                        <div class="slider-dots">
+                            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
+                    </div>
+                    <div class="album-content">
+                        <div class="album-icon">🥇</div>
+                        <h3>Соревнования</h3>
+                        <p>Листайте 9 фото ➡️</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- РАСПИСАНИЕ -->
     <section class="schedule-section" id="schedule">
         <div class="container">
             <h2 class="section-title-full">Расписание тренировок</h2>
             <div class="location-cards">
-                <div class="location-card"><span class="location-number">1</span><h3>Вторая речка</h3><address>ул. Русская, 16Б</address><div class="schedule-item"><span>Пн, Ср, Пт</span><span class="schedule-time">19:00-20:00</span></div><div class="schedule-item"><span>Пн, Ср, Пт</span><span class="schedule-time">19:00-21:00</span></div></div>
-                <div class="location-card"><span class="location-number">2</span><h3>Школа №38</h3><address>пр‑кт 100‑летия, 29а</address><div class="schedule-item"><span>Вт, Чт</span><span class="schedule-time">16:30-17:30</span></div><div class="schedule-item"><span>Сб</span><span class="schedule-time">10:00-11:00</span></div></div>
-                <div class="location-card"><span class="location-number">3</span><h3>Стадион "Строитель"</h3><address>пр‑кт 100‑летия, 30Б</address><div class="schedule-item"><span>Вт, Чт</span><span class="schedule-time">18:00-19:30</span></div><div class="schedule-item"><span>Сб</span><span class="schedule-time">11:00-12:00</span></div></div>
+                <div class="location-card">
+                    <div class="location-number">1</div>
+                    <h3 class="location-title">Вторая речка</h3>
+                    <div class="location-address">ул. Русская, 16Б, Владивосток</div>
+                    <div class="schedule-item">
+                        <span class="schedule-day">Пн, Ср, Пт</span>
+                        <span class="schedule-time">19:00-20:00 <span class="schedule-group">Младшая</span></span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-day">Пн, Ср, Пт</span>
+                        <span class="schedule-time">19:00-21:00 <span class="schedule-group">Старшая</span></span>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <div class="location-number">2</div>
+                    <h3 class="location-title">Школа №38</h3>
+                    <div class="location-address">пр-кт 100-летия Владивостока, 29а, Владивосток</div>
+                    <div class="schedule-item">
+                        <span class="schedule-day">Вт, Чт</span>
+                        <span class="schedule-time">16:30-17:30 <span class="schedule-group">Дневная</span></span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-day">Сб</span>
+                        <span class="schedule-time">10:00-11:00 <span class="schedule-group">Утренняя</span></span>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <div class="location-number">3</div>
+                    <h3 class="location-title">Стадион "Строитель"</h3>
+                    <div class="location-address">пр-кт 100-летия Владивостока, 30Б</div>
+                    <div class="schedule-item">
+                        <span class="schedule-day">Вт, Чт</span>
+                        <span class="schedule-time">18:00-19:30 <span class="schedule-group">Вечерняя</span></span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-day">Сб</span>
+                        <span class="schedule-time">11:00-12:00 <span class="schedule-group">Дневная</span></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- КОНТАКТЫ -->
     <section class="contacts-section" id="contacts">
         <div class="container">
             <div class="contacts-container">
                 <h2 class="full-underline">Начать путь</h2>
-                <p>Первая пробная тренировка — бесплатно. Приходите в удобной спортивной форме.</p>
+                <p class="hero-subtitle">Первая пробная тренировка — бесплатно. Приходите в удобной спортивной форме.</p>
                 <div class="contact-info">
-                    <div class="contact-item"><div class="contact-label">Главный тренер</div><div class="contact-value">8 (964) 440-35-01</div><div>Пырх Вячеслав</div></div>
-                    <div class="contact-item"><div class="contact-label">Второй тренер</div><div class="contact-value">8 (952) 082-72-06</div><div>Смолин Серафим</div></div>
+                    <div class="contact-item">
+                        <div class="contact-label">Главный тренер</div>
+                        <div class="contact-value">8 (964) 440-35-01</div>
+                        <div class="contact-note">Пырх Вячеслав Александрович</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Второй тренер</div>
+                        <div class="contact-value">8 (952) 082-72-06</div>
+                        <div class="contact-note">Смолин Серафим Сергеевич</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Тренировки проходят</div>
+                        <div class="contact-value">в трех локациях Владивостока</div>
+                        <div class="contact-note">Смотрите расписание выше</div>
+                    </div>
                 </div>
-                <a href="tel:+79644403501" class="btn">📞 Позвонить</a>
+                <a href="tel:+79644403501" class="btn">📞 Позвонить главному тренеру</a>
             </div>
         </div>
     </section>
 
+    <!-- ПОДВАЛ -->
     <footer>
         <div class="container">
-            <div class="footer-logo"><a href="#" class="logo"><div class="logo-text"><div class="logo-main">ФАЙТ</div><div class="logo-sub">ТХЭКВОНДО КЛУБ | ВЛАДИВОСТОК</div></div></a></div>
-            <div class="footer-kanji">武道</div>
-            <div class="copyright">Тхэквондо клуб "ФАЙТ" © 2024 | Путь начинается здесь</div>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">
+                        <div class="logo-text">
+                            <div class="logo-main">ФАЙТ</div>
+                            <div class="logo-sub">ТХЭКВОНДО КЛУБ | ВЛАДИВОСТОК</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="footer-kanji">武道</div>
+            </div>
+            <div class="copyright">
+                <p>Тхэквондо клуб "ФАЙТ" © 2024 | Путь начинается здесь</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106838116', 'ym');
+
+        ym(106838116, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106838116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- СКРИПТЫ -->
     <script>
-        // бургер-меню
-        const burger = document.getElementById('burgerBtn');
-        const overlay = document.getElementById('menuOverlay');
-        const menu = document.getElementById('sideMenu');
-        const close = document.getElementById('closeMenu');
-        burger.onclick = () => { menu.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; };
-        close.onclick = () => { menu.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; };
-        overlay.onclick = () => { menu.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; };
-        // плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if(target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-        }));
-        // год в подвале
-        document.querySelector('.copyright').innerHTML = document.querySelector('.copyright').innerHTML.replace('2024', new Date().getFullYear());
-        // форма в Telegram (токен и чат нужно подставить)
-        const tgToken = '8116959879:AAF5QqqLdI1UYBxrd9QENbMs_7uZVj8NGQs';
-        const chatId = '1178608703';
-        document.getElementById('tgForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = e.target.name.value, phone = e.target.phone.value;
-            const msg = `🔥 НОВАЯ ЗАЯВКА\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
-            try {
-                const res = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
-                    method: 'POST', headers: {'Content-Type':'application/json'},
-                    body: JSON.stringify({ chat_id: chatId, text: msg })
-                });
-                if(res.ok) { alert('✅ Заявка отправлена!'); e.target.reset(); }
-                else alert('❌ Ошибка. Попробуйте позже.');
-            } catch { alert('❌ Ошибка сети.'); }
+        // БУРГЕР-МЕНЮ
+        const burgerBtn = document.getElementById('burgerBtn');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const sideMenu = document.getElementById('sideMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        function openMenu() {
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenuFunc() {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        burgerBtn.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFunc);
+        menuOverlay.addEventListener('click', closeMenuFunc);
+
+        // ПЛАВНАЯ ПРОКРУТКА
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
         });
-        // слайдеры (заглушка, можно добавить позже)
+
+        // ОБНОВЛЕНИЕ ГОДА
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyright = document.querySelector('.copyright p');
+            if (copyright) {
+                const currentYear = new Date().getFullYear();
+                copyright.innerHTML = copyright.innerHTML.replace('2024', currentYear);
+            }
+        });
+
+        // ПАРАЛЛАКС
+        window.addEventListener('scroll', function() {
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = 'translateY(' + (window.pageYOffset * 0.5) + 'px)';
+            }
+        });
+
+        // СЛАЙДЕРЫ
+        function initSlider(sliderId) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+            
+            const wrapper = slider.querySelector('.slider-wrapper');
+            const slides = slider.querySelectorAll('.slide');
+            const dots = slider.querySelectorAll('.dot');
+            const prevBtn = slider.querySelector('.prev-btn');
+            const nextBtn = slider.querySelector('.next-btn');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            let startX = 0;
+            let isDragging = false;
+
+            function updateSlider() {
+                wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+                slides.forEach(slide => slide.classList.remove('active'));
+                if (slides[currentSlide]) slides[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+            slider.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            });
+            slider.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diffX = endX - startX;
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) prevSlide();
+                    else nextSlide();
+                }
+                isDragging = false;
+            });
+
+            let slideInterval = setInterval(nextSlide, 5000);
+            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            slider.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initSlider('training-slider');
+            initSlider('attestation-slider');
+            initSlider('competition-slider');
+        });
+
+        // ФОРМА ОБРАТНОЙ СВЯЗИ В TELEGRAM
+        const tgToken = '8116959879:AAF5QqqLdI1UYBxrd9QENbMs_7uZVj8NGQs'; // Твой токен
+        const chatId = '1178608703';                                     // Твой chat_id
+
+        document.getElementById('tgForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[name="name"]').value;
+            const phone = this.querySelector('input[name="phone"]').value;
+
+            const message = `🔥 НОВАЯ ЗАЯВКА С САЙТА\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
+            const url = `https://api.telegram.org/bot${tgToken}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, text: message })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    alert('✅ Заявка отправлена! Мы свяжемся с вами.');
+                    this.querySelector('input[name="name"]').value = '';
+                    this.querySelector('input[name="phone"]').value = '';
+                    if (typeof ym !== 'undefined') ym(106838116, 'reachGoal', 'form_sent');
+                } else {
+                    alert('❌ Ошибка. Попробуйте позже или позвоните нам.');
+                }
+            })
+            .catch(() => alert('❌ Ошибка соединения.'));
+        });
     </script>
 </body>
 </html>

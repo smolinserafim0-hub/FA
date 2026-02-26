@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Yuji+Mai&display=swap" rel="stylesheet">
     <style>
-        /* ===== СБРОС И ПЕРЕМЕННЫЕ (VIP-стиль) ===== */
+        /* ===== СБРОС И ПЕРЕМЕННЫЕ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +20,6 @@
             --bg-dark: #0a0a0a;
             --text-light: #eee;
             --text-lighter: #aaa;
-            --border-light: #333;
         }
         html {
             scroll-behavior: smooth;
@@ -35,7 +34,7 @@
             position: relative;
         }
 
-        /* ===== Фоновые иероглифы (VIP) ===== */
+        /* ===== Фоновые иероглифы ===== */
         .bg-kanji {
             position: fixed;
             top: 0;
@@ -282,12 +281,13 @@
 
         /* ===== ГЛАВНЫЙ ЭКРАН ===== */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
             padding-top: 210px;
+            padding-bottom: 40px;
         }
         .hero-bg {
             position: absolute;
@@ -302,7 +302,7 @@
             z-index: -1;
         }
         .hero-content {
-            width: 60%;
+            max-width: 800px;
         }
         .hero-title {
             font-size: 5rem;
@@ -889,7 +889,7 @@
             min-width: 250px;
         }
 
-        /* ===== АДАПТИВНОСТЬ (ТОЛЬКО ДЛЯ МОБИЛЬНЫХ) ===== */
+        /* ===== АДАПТИВНОСТЬ ===== */
         @media (max-width: 1200px) {
             .container { padding: 0 30px; }
             h1 { font-size: 3.5rem; }
@@ -911,7 +911,7 @@
             .container { padding: 0 20px; }
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
-            .hero { padding-top: 330px; } /* увеличен отступ, чтобы кнопка не уходила под шапку */
+            .hero { padding-top: 330px; }
             .hero-title { font-size: 3.5rem; }
             .hero-buttons {
                 flex-direction: column;

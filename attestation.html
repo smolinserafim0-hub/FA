@@ -2,24 +2,93 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аттестация на пояса | ФАЙТ Тхэквондо</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Аттестация на пояса | ФАЙТ Тхэквондо | Владивосток</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Программа аттестации на пояса тхэквондо ВТФ. Символика поясов, пхумсэ, терминология, история. Тхэквондо клуб ФАЙТ Владивосток.">
+    <meta name="keywords" content="аттестация тхэквондо, пояса тхэквондо, гып, дан, пхумсэ, терминология, тхэквондо владивосток">
+    <meta name="author" content="Тхэквондо клуб ФАЙТ">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Аттестация на пояса | ФАЙТ Тхэквондо">
+    <meta property="og:description" content="Программа аттестации, символика поясов, пхумсэ, терминология">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fight-vl.ru/attestation.html">
+    <meta property="og:image" content="https://i.ibb.co/jPmFnDFt/pyrh.jpg">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://fight-vl.ru/attestation.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥋</text></svg>">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Preload -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Yuji+Mai&display=swap" as="style">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Yuji+Mai&display=swap" rel="stylesheet">
+    
     <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --gold: #FFD700;
+            --red: #8B0000;
+            --black: #000000;
+            --bg-dark: #0a0a0a;
+            --text-light: #eee;
+            --text-lighter: #aaa;
+            --text-dark: #ccc;
+            --bg-card: rgba(0,0,0,0.6);
+            --border: #8B0000;
+        }
+
+        /* ===== Reset ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background: #0a0a0a;
-            color: #ccc;
+            background: var(--bg-dark);
+            color: var(--text-dark);
             line-height: 1.6;
             min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
         }
+
+        /* ===== Skip Link ===== */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--gold);
+            color: var(--black);
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+            font-weight: bold;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ===== Background Kanji ===== */
         .bg-kanji {
             position: fixed;
             top: 0;
@@ -43,42 +112,47 @@
         .bg-kanji span:nth-child(3) { bottom: 10%; left: 10%; }
         .bg-kanji span:nth-child(4) { bottom: 30%; right: 5%; }
         .bg-kanji span:nth-child(5) { top: 50%; left: 40%; font-size: 300px; color: rgba(139,0,0,0.05); }
+        
         .big-do {
             position: fixed;
             bottom: 20px;
             right: 20px;
             font-size: 400px;
             font-family: 'Arial Black', sans-serif;
-            color: rgba(139, 0, 0, 0.1);
+            color: rgba(139, 0, 0, 0.08);
             transform: rotate(-10deg);
             z-index: 0;
             line-height: 1;
             pointer-events: none;
         }
+
+        /* ===== Layout ===== */
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 40px 20px;
             display: flex;
             gap: 30px;
         }
+
+        /* ===== Sidebar Menu ===== */
         .section-menu {
-            flex: 0 0 260px;
-            background: rgba(0,0,0,0.7);
+            flex: 0 0 280px;
+            background: var(--bg-card);
             backdrop-filter: blur(5px);
             padding: 20px;
             border-radius: 15px;
-            border: 1px solid #8B0000;
+            border: 1px solid var(--border);
             height: fit-content;
             position: sticky;
             top: 100px;
         }
         .section-menu h3 {
-            color: #FFD700;
+            color: var(--gold);
             font-size: 1.5rem;
-            border-bottom: 2px solid #8B0000;
+            border-bottom: 2px solid var(--border);
             padding-bottom: 10px;
             margin-bottom: 15px;
             font-family: 'Noto Serif JP', serif;
@@ -91,66 +165,157 @@
         }
         .section-menu a {
             display: block;
-            color: #ccc;
+            color: var(--text-dark);
             text-decoration: none;
-            padding: 6px 10px;
+            padding: 8px 12px;
             border-radius: 4px;
-            transition: background 0.2s, color 0.2s;
+            transition: all 0.2s;
             border-left: 3px solid transparent;
             font-size: 0.9rem;
         }
         .section-menu a:hover,
+        .section-menu a:focus,
         .section-menu a.active {
-            background: #8B0000;
-            color: #FFD700;
-            border-left-color: #FFD700;
+            background: var(--red);
+            color: var(--gold);
+            border-left-color: var(--gold);
+            outline: none;
         }
+        .section-menu .back-link-sidebar {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .section-menu .back-link-sidebar a {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .section-menu .back-link-sidebar a:hover,
+        .section-menu .back-link-sidebar a:focus {
+            background: transparent;
+            color: var(--text-light);
+        }
+
+        /* ===== Mobile Menu Toggle ===== */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--red);
+            color: var(--gold);
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* ===== Main Content ===== */
         .main-content {
             flex: 1;
-            background: rgba(0,0,0,0.6);
+            background: var(--bg-card);
             backdrop-filter: blur(5px);
             padding: 30px;
             border-radius: 20px;
-            border: 1px solid #8B0000;
+            border: 1px solid var(--border);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+            font-family: 'Noto Serif JP', serif;
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+        .logo span {
+            font-size: 1rem;
+            color: var(--text-lighter);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+        }
+        .logo:hover, .logo:focus {
+            color: var(--text-light);
+            outline: none;
+        }
+
+        /* ===== Typography ===== */
+        h1, h2, h3, h4 {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 600;
         }
         .section-block {
             margin-bottom: 60px;
             scroll-margin-top: 100px;
         }
         .section-block h2 {
-            font-family: 'Noto Serif JP', serif;
-            color: #FFD700;
+            color: var(--gold);
             font-size: 2rem;
-            border-left: 5px solid #8B0000;
+            border-left: 5px solid var(--border);
             padding-left: 20px;
             margin-bottom: 30px;
+            line-height: 1.3;
         }
         .section-block h3 {
-            font-family: 'Noto Serif JP', serif;
-            color: #FFD700;
+            color: var(--gold);
             font-size: 1.5rem;
             margin: 25px 0 15px;
             padding-left: 15px;
-            border-left: 3px solid #8B0000;
+            border-left: 3px solid var(--border);
+        }
+        .section-block h4 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
         }
         .section-block p {
             margin-bottom: 20px;
-            color: #ddd;
+            color: var(--text-light);
+            line-height: 1.8;
         }
         .section-block ul, .section-block ol {
             margin-left: 30px;
             margin-bottom: 20px;
-            color: #ddd;
+            color: var(--text-light);
         }
         .section-block li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
+        .section-block strong {
+            color: var(--gold);
+        }
+
+        /* ===== Program Block ===== */
         .program-block {
             background: rgba(255,255,255,0.05);
             border-radius: 10px;
-            padding: 20px;
+            padding: 25px;
             margin-bottom: 30px;
+            border: 1px solid rgba(139,0,0,0.3);
         }
+        .program-block p {
+            margin-bottom: 15px;
+        }
+        .program-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== Tables ===== */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -158,79 +323,221 @@
             background: rgba(255,255,255,0.05);
             border-radius: 8px;
             overflow: hidden;
+            font-size: 0.95rem;
         }
         th, td {
-            border: 1px solid #8B0000;
-            padding: 10px;
+            border: 1px solid var(--border);
+            padding: 12px;
             text-align: left;
-            color: #fff;
+            color: var(--text-light);
         }
         th {
-            background: #8B0000;
-            color: #FFD700;
+            background: var(--red);
+            color: var(--gold);
             font-weight: bold;
+            font-family: 'Noto Serif JP', serif;
         }
         tr:nth-child(even) {
-            background: rgba(139,0,0,0.2);
+            background: rgba(139,0,0,0.15);
         }
+        tr:hover, tr:focus-within {
+            background: rgba(139,0,0,0.25);
+        }
+        td strong {
+            color: var(--gold);
+        }
+
+        /* ===== Belt Colors List ===== */
+        .belt-list {
+            list-style: none;
+            margin-left: 0 !important;
+        }
+        .belt-list li {
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 5px;
+            border-left: 4px solid var(--border);
+            transition: all 0.2s;
+        }
+        .belt-list li:hover {
+            background: rgba(139,0,0,0.2);
+            border-left-color: var(--gold);
+        }
+
+        /* ===== Back Link ===== */
         .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 25px;
-            background: #8B0000;
-            color: #FFD700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            padding: 12px 30px;
+            background: var(--red);
+            color: var(--gold);
             border-radius: 30px;
             font-weight: bold;
             text-decoration: none;
-            transition: 0.2s;
+            transition: all 0.3s;
         }
-        .back-link i {
-            margin-right: 8px;
-        }
-        .back-link:hover {
+        .back-link:hover, .back-link:focus {
             background: #a00000;
+            color: var(--text-light);
+            transform: translateX(-5px);
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
         }
-        .header {
-            display: flex;
-            justify-content: space-between;
+
+        /* ===== Scroll to Top ===== */
+        #scrollTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--red);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            z-index: 999;
+            display: none;
             align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #8B0000;
-            padding-bottom: 15px;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
-        .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #FFD700;
+        #scrollTop:hover, #scrollTop:focus {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+            outline: none;
         }
-        .logo span {
-            font-size: 1rem;
-            color: #ccc;
-            margin-left: 10px;
+        #scrollTop.visible {
+            display: flex;
         }
-        @media (max-width: 900px) {
+
+        /* ===== Print Styles ===== */
+        @media print {
+            .bg-kanji, .big-do, .section-menu, #scrollTop {
+                display: none !important;
+            }
+            body { background: white; color: black; }
+            .main-content { 
+                background: white; 
+                border: 1px solid #333;
+                width: 100%;
+                max-width: none;
+            }
+            .section-block { break-inside: avoid; }
+            table { break-inside: avoid; }
+            a { text-decoration: none; color: black; }
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
             .container {
                 flex-direction: column;
             }
             .section-menu {
-                position: static;
+                position: fixed;
+                left: -300px;
+                top: 0;
+                height: 100vh;
+                z-index: 999;
+                border-radius: 0;
+                transition: left 0.3s ease;
+                overflow-y: auto;
+            }
+            .section-menu.active {
+                left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
                 width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                z-index: 998;
+            }
+            .menu-overlay.active {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .main-content {
+                padding: 20px;
+            }
+            .section-block h2 {
+                font-size: 1.6rem;
+            }
+            .section-block h3 {
+                font-size: 1.3rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th, td {
+                padding: 8px;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .logo span {
+                font-size: 0.85rem;
+            }
+            #scrollTop {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* ===== Reduced Motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-kanji">
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Перейти к содержимому</a>
+
+    <!-- Background -->
+    <div class="bg-kanji" aria-hidden="true">
         <span>태권도</span>
         <span>跆拳道</span>
         <span>武</span>
         <span>道</span>
         <span>태권</span>
     </div>
-    <div class="big-do">道</div>
+    <div class="big-do" aria-hidden="true">道</div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
 
     <div class="container">
-        <div class="section-menu">
+        <!-- Sidebar -->
+        <nav class="section-menu" id="sectionMenu" role="navigation" aria-label="Навигация по разделам">
             <h3>Аттестация</h3>
             <ul>
                 <li><a href="#program" class="active">Программа аттестации</a></li>
@@ -242,19 +549,22 @@
                 <li><a href="#terminology">Терминология</a></li>
                 <li><a href="#numbers">Счет и прочее</a></li>
             </ul>
-            <div style="margin-top: 30px;">
-                <a href="index.html" style="color: #FFD700; text-decoration: none;"><i class="fas fa-arrow-left"></i> На главную</a>
+            <div class="back-link-sidebar">
+                <a href="index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> На главную</a>
             </div>
-        </div>
+        </nav>
 
-        <div class="main-content">
-            <div class="header">
-                <div class="logo">ФАЙТ <span>ТХЭКВОНДО КЛУБ</span></div>
-            </div>
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <header class="header">
+                <a href="index.html" class="logo" aria-label="На главную">
+                    ФАЙТ <span>ТХЭКВОНДО КЛУБ</span>
+                </a>
+            </header>
 
-            <!-- Раздел 1: Программа аттестации (гып, дан) -->
-            <div id="program" class="section-block">
-                <h2>Программа аттестации</h2>
+            <!-- Раздел 1: Программа аттестации -->
+            <section id="program" class="section-block" aria-labelledby="program-heading">
+                <h2 id="program-heading">Программа аттестации</h2>
                 <p>Программа аттестации на ученические ступени (гып) и мастерские ступени (дан) предусматривает объём знаний, умений и практических навыков, которыми должен овладеть каждый занимающийся в соответствии с учебным планом тренировочных занятий и длительностью своего обучения. Проще говоря — это список технических действий, приёмов и упражнений тхэквондо, выполняемых спортсменом для получения ступени мастерства (пояса).</p>
                 <p>Программа на ученические ступени разработана Федерацией с учётом требований, принятых во всём мире. Все спортсмены, рекомендованные для аттестации на цветные пояса, обязаны выполнять все пункты данной программы.</p>
                 <p>Аттестация на мастерские ступени (чёрно-красные, чёрные пояса) проводится в соответствии с Положением об аттестации Всемирной Академии Тхэквондо (Kukkiwon Regulations for Promotion Tests).</p>
@@ -321,13 +631,13 @@
 
                 <h3>ПРАВИЛА АТТЕСТАЦИИ на ДАНЫ и ПУМЫ (мастерские степени)</h3>
                 <p>в соответствии с «Аттестационными правилами ВТФ»:</p>
-                <table>
+                <table role="table" aria-label="Таблица сроков аттестации на даны и пумы">
                     <thead>
                         <tr>
-                            <th>пум/дан</th>
-                            <th>Минимальное время подготовки</th>
-                            <th>Возрастные пределы для аттестации начиная с дана</th>
-                            <th>Возрастные пределы для аттестации начиная с пума</th>
+                            <th scope="col">пум/дан</th>
+                            <th scope="col">Минимальное время подготовки</th>
+                            <th scope="col">Возрастные пределы для аттестации начиная с дана</th>
+                            <th scope="col">Возрастные пределы для аттестации начиная с пума</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -336,29 +646,30 @@
                         <tr><td>со 2 на 3 пум</td><td>2 года</td><td>-</td><td>моложе 15 лет</td></tr>
                         <tr><td>с 3 на 4 пум</td><td>3 года</td><td>-</td><td>моложе 15 лет</td></tr>
                         <tr><td>1 дан</td><td>-</td><td>15 лет и старше</td><td>-</td></tr>
-                        <tr style="background-color: #c0c0c0;"><td><strong>с 1 на 2 дан</strong></td><td><strong>1 год</strong></td><td><strong>16 лет и старше</strong></td><td><strong>15 лет и старше</strong></td></tr>
+                        <tr style="background-color: rgba(192,192,192,0.3);"><td><strong>с 1 на 2 дан</strong></td><td><strong>1 год</strong></td><td><strong>16 лет и старше</strong></td><td><strong>15 лет и старше</strong></td></tr>
                         <tr><td>со 2 на 3 дан</td><td>2 года</td><td>18 лет и старше</td><td>16 лет и старше</td></tr>
-                        <tr style="background-color: #c0c0c0;"><td><strong>с 3 на 4 дан</strong></td><td><strong>3 года</strong></td><td><strong>21 год и старше</strong></td><td><strong>18 лет и старше</strong></td></tr>
+                        <tr style="background-color: rgba(192,192,192,0.3);"><td><strong>с 3 на 4 дан</strong></td><td><strong>3 года</strong></td><td><strong>21 год и старше</strong></td><td><strong>18 лет и старше</strong></td></tr>
                         <tr><td>с 4 на 5 дан</td><td>4 года</td><td>25 лет и старше</td><td>22 года и старше</td></tr>
-                        <tr style="background-color: #c0c0c0;"><td><strong>с 5 на 6 дан</strong></td><td><strong>5 лет</strong></td><td><strong>30 лет и старше</strong></td><td><strong>30 лет и старше</strong></td></tr>
+                        <tr style="background-color: rgba(192,192,192,0.3);"><td><strong>с 5 на 6 дан</strong></td><td><strong>5 лет</strong></td><td><strong>30 лет и старше</strong></td><td><strong>30 лет и старше</strong></td></tr>
                         <tr><td>с 6 на 7 дан</td><td>6 лет</td><td>36 лет и старше</td><td>36 лет и старше</td></tr>
-                        <tr style="background-color: #c0c0c0;"><td><strong>с 7 на 8 дан</strong></td><td><strong>8 лет</strong></td><td><strong>44 года и старше</strong></td><td><strong>44 года и старше</strong></td></tr>
+                        <tr style="background-color: rgba(192,192,192,0.3);"><td><strong>с 7 на 8 дан</strong></td><td><strong>8 лет</strong></td><td><strong>44 года и старше</strong></td><td><strong>44 года и старше</strong></td></tr>
                         <tr><td>с 8 на 9 дан</td><td>9 лет</td><td>53 года и старше</td><td>53 года и старше</td></tr>
                         <tr><td>с 9 на 10 дан</td><td>-</td><td>60 лет и старше</td><td>60 лет и старше</td></tr>
                     </tbody>
                 </table>
-                <p>*по материалам книги «Тхэквондо: теория и методика. Том1. Спортивное единоборство.» под ред. Ю.А. Шулики и Е.Ю.Ключникова.</p>
-            </div>
+                <p><small>*по материалам книги «Тхэквондо: теория и методика. Том1. Спортивное единоборство.» под ред. Ю.А. Шулики и Е.Ю.Ключникова.</small></p>
+            </section>
 
             <!-- Раздел 2: Символика поясов -->
-            <div id="symbolics" class="section-block">
-                <h2>Символика поясов</h2>
+            <section id="symbolics" class="section-block" aria-labelledby="symbolics-heading">
+                <h2 id="symbolics-heading">Символика поясов</h2>
                 <p>Для оценки развития характера, силы духа, стойкости, техники и индивидуальных возможностей в тхэквондо существует своя система. Шкала оценок разделена на 19 градаций: 10 гыпов и 9 данов. Отсчет гыпов идет по убывающей от десятого (самого низкого) к первому. Отсчет данов идет по возрастающей от первого к девятому.</p>
                 <p>Конечно, выбранная система оценок имеет определенное значение. Что касается данов, то число 9 не только является наибольшим числом, состоящим из одной цифры, но и равно числу 3 умноженному на 3. На Востоке 3 является наиболее почитающимся числом. В китайском языке число 3 записывается в виде трех горизонтальных линий. Верхняя линия символизирует Бога, средняя — мораль, нижняя — Землю.</p>
                 <p>Существовало поверье, что человек, прославивший свою страну, человечество и Бога, при этом сумевший достичь гармонии со всеми тремя, достоин стать королем. Написание слова «король» очень похоже на написание слова «три». Китайские иероглифы, обозначающие слова «три» и «король», — почти синонимы. Когда число 3 умножается на себя, результат 9 приобретает смысловое значение «высший среди высших». Таким образом, IX-й дан является высшим среди высших данов.</p>
                 <p>Интересно отметить, что умножив 9 на любое положительное число, состоящее из одной цифры, и сложив между собой цифры в числе, полученном в результате умножения, мы всегда получаем 9. Например, 9×1=9; 9×2=18; 1+8=9 и так далее вплоть до 9×9=81, 8+1=9. То, что 9 является единственным числом с такими свойствами, может рассматриваться как указание на то, что число 9 является наиболее значимым среди чисел.</p>
                 <p>Рассмотрим другие аспекты использования числа 3. Даны делятся на три группы. Даны с 1-го по 3-й рассматриваются как начальные стадии черного пояса. Их обладатели все еще остаются новичками по сравнению с обладателями более высоких данов. Став обладателем 4-го дана, тхэквондист как бы переступает порог и входит в класс мастеров. Обладатели данов с 7-го по 9 — мастера тхэквондо, являющиеся элитой, разбирающиеся во всех тонкостях тхэквондо.</p>
-                <ul>
+                
+                <ul class="belt-list">
                     <li><strong>10 гып — белый пояс</strong></li>
                     <li><strong>9 гып — белый пояс</strong></li>
                     <li><strong>8 гып — желтый пояс</strong></li>
@@ -370,13 +681,14 @@
                     <li><strong>2 гып — красный пояс</strong></li>
                     <li><strong>1 гып — красный пояс</strong></li>
                 </ul>
+                
                 <p>Белый цвет говорит о чистоте зимнего снега. Зима — рождение нового года — рождение нового человека. Это пояс для начинающих. Желтый и зеленый — это цвета весны — под солнечными лучами распускаются листья деревьев. Человек с желтым или зеленым поясом открывает себя, изучая истоки искусства. Синий и красный — цвета лета. Синий — цвет неба — символ необъятности и глубины пространства. Красный — цвет созревших плодов, цвет спелости. Это пояса для тех, кто познает себя, устремляясь в высоты искусства. Коричневый и черный — цвета, символизирующие осень, конец года, время сбора урожая для природы и время подведения итогов, определения новых целей для человека.</p>
                 <p>Белый цвет, преломляясь, разлагается на все названные, кроме черного. Черный цвет — цвет мудрости — стоит отдельно в природе. Также и обладатель черного пояса — пояса мастера — стоит отдельно от остальных спортсменов.</p>
-            </div>
+            </section>
 
             <!-- Раздел 3: Основные стойки -->
-            <div id="stances" class="section-block">
-                <h2>Основные стойки</h2>
+            <section id="stances" class="section-block" aria-labelledby="stances-heading">
+                <h2 id="stances-heading">Основные стойки</h2>
                 <ol>
                     <li><strong>МОА СОГИ</strong> – Стопы ног сведены вместе. Вес тела распределен на обе ноги. Корпус прямой.</li>
                     <li><strong>НАРАНХИ СОГИ</strong> – Ноги на ширине плеч. Вес тела распределен на обе ноги. Корпус прямой.</li>
@@ -390,11 +702,11 @@
                     <li><strong>ХАКДАРИ СОГИ</strong> – Опорная нога немного согнута в колене. Свободная нога стопой прижимается к опорной ноге, закрывая колено.</li>
                     <li><strong>ПЬОНХИ СОГИ</strong> – Свободная стойка. Ноги на ширине плеч, носки врозь. Руки согнуты в локтях, скрещены, кулаки у подбородка.</li>
                 </ol>
-            </div>
+            </section>
 
-            <!-- Раздел 4: Символики Пхумсэ (Тхэгык) -->
-            <div id="poomsae" class="section-block">
-                <h2>Ученические формальные комплексы (Тхэгык пхумсэ)</h2>
+            <!-- Раздел 4: Символики Пхумсэ -->
+            <section id="poomsae" class="section-block" aria-labelledby="poomsae-heading">
+                <h2 id="poomsae-heading">Ученические формальные комплексы (Тхэгык пхумсэ)</h2>
                 <p>Тхэгык дословно переводится как «Великий Предел» и является одной из основных категорий восточной философии, которая тесно связана с концепцией восьми триграмм, символизирующей цикл непрерывных превращений, которые постоянно происходят как с самим человеком, так и с миром, который его окружает. Восемь триграмм представляют собой комбинации трех черт, которые могут быть сплошными или прерывистыми. Каждая триграмма символизирует определенные процессы и состояния. Каждому пхумсэ из группы Тхэгык соответствует определенная триграмма, а пхумсэ символизирует те свойства, которые она выражает.</p>
                 
                 <h3>Тхэгук иль чан</h3>
@@ -420,11 +732,11 @@
                 
                 <h3>Тхэгук пхаль чан</h3>
                 <p>Пхумсэ имеет символ КОН-хальвэ, символизирует Землю и олицетворяет силу, твердость и мощь. Тхэгук пхаль чан посвящено росту и созреванию. Земля получает благословение неба и порождает жизнь, следит за плодородием, а также за воспроизведением и развитием порожденной ею жизни.</p>
-            </div>
+            </section>
 
             <!-- Раздел 5: Мастерские пхумсэ -->
-            <div id="master-poomsae" class="section-block">
-                <h2>Мастерские формальные комплексы</h2>
+            <section id="master-poomsae" class="section-block" aria-labelledby="master-poomsae-heading">
+                <h2 id="master-poomsae-heading">Мастерские формальные комплексы</h2>
                 
                 <h3>KORYO (Корё)</h3>
                 <p>Корё — это имя древней династии, которая правила с 918 по 1392 гг. н.э. Династия Корё оказала большое влияние на культурное наследие современной Кореи. В 1234 г., почти за 200 лет до Иоганна Гуттенберга, корейцы первыми в мире использовали металлические литеры для печати. Знаменитая керамика Корё из тех же времен. Корейский народ мужественно оборонялся от монгольских орд, повергших весь мир в ужас. Корё пхумсэ отражает в своих движениях душевное состояние и решительность народа Корё бесстрашно противостоять могучему врагу и победить в борьбе с ним. Эта героическая борьба Корё должна напоминать нам о том, что все трудности нужно преодолевать мужественно и без боязни.</p>
@@ -452,11 +764,11 @@
                 
                 <h3>ILYEO (Илье)</h3>
                 <p>Илье показывает исключительность. В буддизме состояние духовного развития рассматривают как объединение духа и сущности в исключительность. Окончательный идеал Тхэквондо находится в этом состоянии Илье, где заключительной целью Тхэквондо является дисциплина, в которой мы концентрируем внимание на каждом движении, отбрасывая все мирские мысли и навязчивые идеи.</p>
-            </div>
+            </section>
 
             <!-- Раздел 6: История тхэквондо -->
-            <div id="history" class="section-block">
-                <h2>История тхэквондо</h2>
+            <section id="history" class="section-block" aria-labelledby="history-heading">
+                <h2 id="history-heading">История тхэквондо</h2>
                 <p><strong>Тхэквондо</strong> – путь постижения истины с помощью совершенствования техники рук и ног. Тхэквондо — современное корейское боевое искусство, созданное на основе традиционных корейских единоборств. Тхэквондо – это защита без оружия и вид спорта, последователи которого мобилизуют свой потенциал и закаляют тело, приобретают технику использования рук и ног в любой критической ситуации и в любом месте. Ныне Тхэквондо вошло в жизнь многих стран мира. Цвет формы спортсменов – белый, он является символом корейской нации.</p>
                 <p>Зарождались корейские боевые искусства в виде игр и религиозных обрядов. Устраивались состязания, подобные тем, что проходили в Олимпе, в Древней Греции. Около 2000 лет назад несколько племён на Корейском полуострове вошли в состав 3-х королевств: Пэкче, Силла и Когуре. Между королевствами возникли территориальные разногласия, приведшие к войнам за прилегающие территории. В Пэкче, Силла и Когуре стали создавать армии, состоящие из обученных воинов. Возникли военные школы: «Санбей» в Когуре и «Хваранг» в Силле, которые использовали боевое искусство как один из самых важных предметов обучения военному делу. Тренировки этих военных школ предназначались для молодёжи и превращали занимающихся в убеждённых воинов. Свидетельства этому можно найти в исторических документах и наскальных рисунках, созданных в эпоху Когуре.</p>
                 <p>Состязания по боевым искусствам получили название — Субаки. В исторических документах говорится, что Субаки использовалось как средство испытания воинов и как экзамен для поступления на воинскую службу. Имеются свидетельства, что развитая техника работы ногами была широко известна в Корее, начиная с 12 века, и во время войны 1592-1598 гг. между Кореей и Японией мастера боевых корейских искусств выбивали вражеских всадников из седла ударом ноги в прыжке.</p>
@@ -464,11 +776,11 @@
                 <p>В 1972 в Сеуле был открыт дворец «Куккивон» – Всемирный центр тхэквондо, инициатор мировых чемпионатов, которые проходят каждые 2 года. 28 мая 1973 была основана ВТФ (Всемирная федерация тхэквондо). На Азиатских играх Тхэквондо было представлено КУККИВОНОМ в 1986 году. В сентябре 1988, во время проведения Олимпийских игр в Сеуле, тхэквондо было принято в качестве показательного вида, а в сентябре 1994 на ассамблее Международного олимпийского комитета в Париже тхэквондо версии ВТФ было включено в программу Олимпийских игр. В 2000 г. (Сидней, Австралия) разыгрывался первый комплект Олимпийских наград в тхэквондо (8 весовых категорий, 4 у мужчин, 4 у женщин). Далее Олимпийские турниры по тхэквондо проходили в Афинах (2004), Пекине (2008), Лондоне (2012), Рио-де-Жанейро (2016), Токио (2021).</p>
                 <p>Существует 2 основных вида Тхэквондо: ИТФ (Интернациональная Федерация Тхэквондо) — из КНДР, ВТФ (Всемирная Федерация Тхэквондо) — из Республики Корея. Южнокорейское направление вошло в состав Олимпийских видов спорта, а это накладывает большой отпечаток на развитие этого вида единоборств в мире.</p>
                 <p>В 1973 году на момент образования ВТФ в её состав вошло 108 стран. На данный момент в состав Всемирной Федерации Тхэквондо входят 206 стран из Америки, Европы, Африки, Азии и Океании.</p>
-            </div>
+            </section>
 
             <!-- Раздел 7: Терминология -->
-            <div id="terminology" class="section-block">
-                <h2>Терминология</h2>
+            <section id="terminology" class="section-block" aria-labelledby="terminology-heading">
+                <h2 id="terminology-heading">Терминология</h2>
                 <p><em>Направления, уровни, части тела, команды инструктора, ударные поверхности рук и ног, стойки, блоки, удары и прочее для подготовки к экзаменам на пояса.</em></p>
                 
                 <h3>На 10-й гып</h3>
@@ -516,6 +828,7 @@
                     <li><strong>Моа-соги</strong> — Стойка ожидания (пятки вместе-носки вместе)</li>
                     <li><strong>Наранхи-соги</strong> — Стойка готовности (ноги на ширине плеч, стопы параллельны)</li>
                     <li><strong>Пьенхи-соги</strong> — Стойка готовности (ноги на ширине плеч, стопы разведены)</li>
+                    <li><strong
                     <li><strong>Чучум-соги</strong> — Стойка «всадника»</li>
                     <li><strong>Ап-соги</strong> — Передняя высокая стойка</li>
                     <li><strong>Ап-куби</strong> — Передняя низкая стойка</li>
@@ -624,11 +937,12 @@
                     <li><strong>Керуги</strong> — Спарринг</li>
                     <li><strong>Кёк-па</strong> — Разбивание твёрдых предметов</li>
                 </ul>
-            </div>
+            </section>
 
             <!-- Раздел 8: Счет и прочее -->
-            <div id="numbers" class="section-block">
-                <h2>Счет и прочее</h2>
+            <section id="numbers" class="section-block" aria-labelledby="numbers-heading">
+                <h2 id="numbers-heading">Счет и прочее</h2>
+                
                 <h3>Счет</h3>
                 <ul>
                     <li><strong>Хана (Иль)</strong> — 1 (-й)</li>
@@ -657,35 +971,130 @@
                     <li><strong>Ап паль</strong> — Движение Ближней ногой</li>
                     <li><strong>Тит паль</strong> — Движение Дальней ногой</li>
                 </ul>
-            </div>
+            </section>
 
-            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> На главную</a>
-        </div>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> На главную</a>
+        </main>
     </div>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" aria-label="Прокрутить наверх">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- JavaScript -->
     <script>
-        // Подсветка активного раздела
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sectionMenu = document.getElementById('sectionMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function openMenu() {
+            sectionMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            sectionMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle?.addEventListener('click', () => {
+            if (sectionMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        menuOverlay?.addEventListener('click', closeMenu);
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sectionMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Active section highlighting
         const sections = document.querySelectorAll('.section-block');
         const navLinks = document.querySelectorAll('.section-menu a');
 
-        window.addEventListener('scroll', () => {
+        function updateActiveLink() {
             let current = '';
+            const scrollPos = window.pageYOffset + 150;
+
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 120;
+                const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                const href = link.getAttribute('href').substring(1);
+                const href = link.getAttribute('href')?.substring(1);
                 if (href === current) {
                     link.classList.add('active');
                 }
             });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        updateActiveLink();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    closeMenu();
+                    
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn?.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Print functionality
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                // Prepare page for printing
+                document.body.classList.add('printing');
+            }
+        });
+
+        console.log('🥋 ФАЙТ Тхэквондо - Страница аттестации загружена');
     </script>
 </body>
 </html>

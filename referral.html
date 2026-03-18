@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Приведи друга – ФАЙТ Тхэквондо</title>
+    <!-- Стили как на основном сайте -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --gold: #FFD700;
+            --red: #8B0000;
+            --black: #000000;
+            --bg-dark: #0a0a0a;
+            --text-light: #ffffff;
+            --text-lighter: #e0e0e0;
+            --font-main: 'Montserrat', sans-serif;
+        }
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .flyer {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--red);
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Фоновые иероглифы (как на сайте) */
+        .flyer::before {
+            content: "道";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 150px;
+            font-weight: 900;
+            color: rgba(139,0,0,0.15);
+            transform: rotate(-10deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .flyer-content {
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            color: var(--gold);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .bonus {
+            background: var(--red);
+            color: var(--gold);
+            font-size: 2rem;
+            font-weight: 800;
+            padding: 15px 20px;
+            border-radius: 60px;
+            text-align: center;
+            margin: 20px 0 30px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 5px 0 #5a0000;
+        }
+        .bonus span {
+            font-size: 1.1rem;
+            display: block;
+            font-weight: 400;
+        }
+        .section {
+            background: rgba(255,255,255,0.03);
+            border-left: 5px solid var(--gold);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+        }
+        .section h2 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section p {
+            color: var(--text-lighter);
+            margin-bottom: 10px;
+        }
+        .section i {
+            color: var(--gold);
+            width: 30px;
+        }
+        .highlight {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .btn-share {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+            border-radius: 50px;
+            margin: 30px 0 20px;
+        }
+        .btn-share:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--gold);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+        .btn-share:hover, .btn-share:focus {
+            color: var(--black);
+            outline: 2px solid var(--gold);
+        }
+        .btn-share:hover:before {
+            left: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--red);
+            background: rgba(255,255,255,0.1);
+            color: var(--text-light);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--red);
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        .btn-submit:hover {
+            background: var(--red);
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+        .form-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 30px;
+            display: none;
+            text-align: center;
+        }
+        .form-status.success {
+            background: rgba(0,128,0,0.2);
+            border: 1px solid #008000;
+            color: #90EE90;
+            display: block;
+        }
+        .form-status.error {
+            background: rgba(139,0,0,0.2);
+            border: 1px solid var(--red);
+            color: #ff6b6b;
+            display: block;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-lighter);
+            border-top: 1px solid var(--red);
+            padding-top: 15px;
+        }
+        .footer-note a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 480px) {
+            .flyer { padding: 20px 15px; }
+            h1 { font-size: 1.8rem; }
+            .bonus { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="flyer-content">
+            <h1>🥋 Приведи друга — получи бонус!</h1>
+            <div class="bonus">
+                500 ₽ <span>за каждого нового ученика</span>
+            </div>
+
+            <!-- Для родителей, чьи дети уже занимаются -->
+            <div class="section">
+                <h2><i class="fas fa-child"></i> Вы уже с нами?</h2>
+                <p>Приглашайте друзей вашего ребёнка в наш клуб. После того, как новый ученик оплатит первый месяц, <span class="highlight">вы получите скидку 500 рублей</span> на следующий абонемент. Можно приводить сколько угодно друзей — скидка суммируется!</p>
+                <p><i class="fas fa-check-circle" style="color: var(--gold);"></i> Бонус начисляется в конце каждого месяца.</p>
+            </div>
+
+            <!-- Для тех, кто просто хочет порекомендовать -->
+            <div class="section">
+                <h2><i class="fas fa-users"></i> Знаете кого-то, кому это нужно?</h2>
+                <p>Расскажите о нас знакомым. Если они приведут ребёнка и тот начнёт заниматься, <span class="highlight">вы получите 500 рублей</span> на карту или наличными. Мы ценим любую рекомендацию!</p>
+                <p><i class="fas fa-star"></i> Просто сообщите нам имя того, кто пришёл по вашей рекомендации.</p>
+            </div>
+
+            <!-- Кнопка поделиться -->
+            <button class="btn-share" id="shareButton">
+                <i class="fas fa-share-alt" aria-hidden="true"></i> Поделиться ссылкой
+            </button>
+
+            <!-- Форма для уведомления о приведённом друге -->
+            <h3 style="color: var(--gold); text-align: center; margin: 30px 0 15px;">Сообщить о новом друге</h3>
+            <form id="referralForm">
+                <div class="form-group">
+                    <input type="text" id="referrerName" placeholder="Ваше имя (кто пригласил)" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="friendName" placeholder="Имя нового ученика" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="friendPhone" placeholder="Телефон нового ученика" required>
+                </div>
+                <button type="submit" class="btn-submit">Отправить заявку</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+
+            <div class="footer-note">
+                <p>Акция действует постоянно. Подробности у администратора.</p>
+                <p><a href="index.html">← На главную страницу клуба</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Токен и chat_id из основного сайта (можно вынести в константы) -->
+    <script>
+        const TELEGRAM_BOT_TOKEN = '8116959879:AAF5QqqLdI1UYBxrd9QENbMs_7uZVj8NGQs';
+        const TELEGRAM_CHAT_ID = '1178608703';
+
+        // Кнопка "Поделиться"
+        const shareButton = document.getElementById('shareButton');
+        if (navigator.share) {
+            shareButton.addEventListener('click', () => {
+                navigator.share({
+                    title: 'ФАЙТ Тхэквондо — приведи друга',
+                    text: '🥋 Приводи друзей в наш клуб и получай бонусы!',
+                    url: window.location.href
+                }).catch(() => {
+                    alert('Ссылка скопирована в буфер обмена');
+                    navigator.clipboard?.writeText(window.location.href);
+                });
+            });
+        } else {
+            shareButton.addEventListener('click', () => {
+                navigator.clipboard?.writeText(window.location.href);
+                alert('Ссылка скопирована в буфер обмена');
+            });
+        }
+
+        // Форма отправки
+        const form = document.getElementById('referralForm');
+        const formStatus = document.getElementById('formStatus');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const referrer = document.getElementById('referrerName').value.trim();
+            const friend = document.getElementById('friendName').value.trim();
+            const phone = document.getElementById('friendPhone').value.trim();
+
+            if (!referrer || !friend || !phone) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Заполните все поля';
+                return;
+            }
+
+            const message = `🤝 РЕФЕРАЛЬНАЯ ЗАЯВКА\nОт: ${referrer}\nНовый ученик: ${friend}\nТелефон: ${phone}`;
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message })
+                });
+                const result = await response.json();
+                if (result.ok) {
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = '✅ Заявка отправлена! Мы свяжемся с вами.';
+                    form.reset();
+                } else {
+                    throw new Error();
+                }
+            } catch (error) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = '❌ Ошибка. Попробуйте позже или напишите в Telegram.';
+            }
+        });
+    </script>
+</body>
+</html>

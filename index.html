@@ -70,6 +70,7 @@
         html {
             scroll-behavior: smooth;
             -webkit-text-size-adjust: 100%;
+            overflow-x: hidden; /* предотвращает горизонтальный скролл */
         }
         
         body {
@@ -501,13 +502,13 @@
             justify-content: center;
         }
 
-        /* ===== ВИДЕО (новая секция) ===== */
+        /* ===== ВИДЕО ===== */
         .video-section {
             padding: 60px 0;
         }
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -1304,10 +1305,12 @@
             }
         }
 
-        /* ===== МОБИЛЬНАЯ ЦЕНТРАЦИЯ ===== */
+        /* ===== МОБИЛЬНАЯ ЦЕНТРАЦИЯ (усиленная) ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             section {
@@ -1332,6 +1335,8 @@
             .hero-buttons .btn {
                 width: 100%;
                 max-width: 280px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .trainers-grid {
@@ -1530,7 +1535,7 @@
             </div>
         </section>
 
-        <!-- ВИДЕО – СЛОВО ТРЕНЕРА (добавлено из нового файла) -->
+        <!-- ВИДЕО – СЛОВО ТРЕНЕРА -->
         <section class="video-section" id="video" aria-labelledby="video-heading">
             <div class="container">
                 <h2 class="section-title-full" id="video-heading">Слово тренера</h2>
@@ -1636,7 +1641,7 @@
             </div>
         </section>
 
-        <!-- ФОРМА ЗАПИСИ (с токеном бота из нового файла) -->
+        <!-- ФОРМА ЗАПИСИ -->
         <section class="callback-section" id="callback" aria-labelledby="callback-heading">
             <div class="container">
                 <h2 class="section-title-full" style="text-align: center;" id="callback-heading">Записаться на тренировку</h2>
@@ -1983,7 +1988,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 Тхэквондо клуб ФАЙТ. Все права защищены.</p>
+                <p>&copy; 2024 Тхэквондо клуб ФАЙТ. Все права защищены.</p>
                 <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Путь длиною в жизнь</p>
             </div>
         </div>
@@ -2000,7 +2005,7 @@
         <button id="cookie-accept">Принять</button>
     </div>
 
-    <!-- Yandex.Metrika counter (из нового файла) -->
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -2134,7 +2139,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ===== ФОРМА (с токеном бота из нового файла) =====
+        // ===== ФОРМА (с токеном бота) =====
         const tgForm = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
         const formStatus = document.getElementById('formStatus');
@@ -2143,7 +2148,6 @@
         const nameError = document.getElementById('name-error');
         const phoneError = document.getElementById('phone-error');
 
-        // Токен и chat_id из нового файла
         const TELEGRAM_BOT_TOKEN = '8116959879:AAF5QqqLdI1UYBxrd9QENbMs_7uZVj8NGQs';
         const TELEGRAM_CHAT_ID = '1178608703';
 

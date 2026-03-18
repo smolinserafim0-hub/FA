@@ -2,15 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Аттестация на пояса | ФАЙТ Тхэквондо | Владивосток</title>
-    
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="Программа аттестации на пояса тхэквондо ВТФ. Символика поясов, пхумсэ, терминология, история. Тхэквондо клуб ФАЙТ Владивосток.">
     <meta name="keywords" content="аттестация тхэквондо, пояса тхэквондо, гып, дан, пхумсэ, терминология, тхэквондо владивосток">
     <meta name="author" content="Тхэквондо клуб ФАЙТ">
     <meta name="robots" content="index, follow">
-    
+    <meta name="theme-color" content="#8B0000">
+
     <!-- Open Graph -->
     <meta property="og:title" content="Аттестация на пояса | ФАЙТ Тхэквондо">
     <meta property="og:description" content="Программа аттестации, символика поясов, пхумсэ, терминология">
@@ -18,58 +19,110 @@
     <meta property="og:url" content="https://fight-vl.ru/attestation.html">
     <meta property="og:image" content="https://i.ibb.co/jPmFnDFt/pyrh.jpg">
     <meta property="og:locale" content="ru_RU">
-    
+
     <!-- Canonical -->
     <link rel="canonical" href="https://fight-vl.ru/attestation.html">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥋</text></svg>">
-    
-    <!-- Preconnect -->
+
+    <!-- Preconnect & Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- Preload -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Yuji+Mai&display=swap" as="style">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Yuji+Mai&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ===== CSS Variables ===== */
-        :root {
-            --gold: #FFD700;
-            --red: #8B0000;
-            --black: #000000;
-            --bg-dark: #0a0a0a;
-            --text-light: #eee;
-            --text-lighter: #aaa;
-            --text-dark: #ccc;
-            --bg-card: rgba(0,0,0,0.6);
-            --border: #8B0000;
-        }
+    <link rel="preconnect" href="https://i.ibb.co">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
 
-        /* ===== Reset ===== */
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== СБРОС И ПЕРЕМЕННЫЕ (как на главной) ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --gold: #FFD700;
+            --red: #8B0000;
+            --black: #000000;
+            --bg-dark: #0a0a0a;
+            --text-light: #ffffff;
+            --text-lighter: #e0e0e0;
+            --font-main: 'Montserrat', sans-serif;
+        }
+
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-dark);
+            font-family: var(--font-main);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
-            min-height: 100vh;
-            position: relative;
+            letter-spacing: 0.01em;
             overflow-x: hidden;
+            position: relative;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        /* ===== Фоновые иероглифы (как на главной) ===== */
+        .bg-kanji {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-kanji span {
+            position: absolute;
+            font-size: 180px;
+            font-weight: 900;
+            color: rgba(255, 215, 0, 0.06);
+            white-space: nowrap;
+            font-family: var(--font-main);
+            transform: rotate(-15deg);
+        }
+
+        .bg-kanji span:nth-child(1) { top: 5%; left: 2%; }
+        .bg-kanji span:nth-child(2) { top: 20%; left: 80%; }
+        .bg-kanji span:nth-child(3) { bottom: 10%; left: 10%; }
+        .bg-kanji span:nth-child(4) { bottom: 30%; right: 5%; }
+        .bg-kanji span:nth-child(5) { top: 50%; left: 40%; font-size: 300px; color: rgba(139,0,0,0.08); }
+
+        .big-do {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 400px;
+            font-family: var(--font-main);
+            color: rgba(139, 0, 0, 0.1);
+            transform: rotate(-10deg);
+            z-index: 0;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        /* ===== Контейнер ===== */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 30px;
+            width: 100%;
         }
 
         /* ===== Skip Link ===== */
@@ -84,67 +137,47 @@
             z-index: 10000;
             font-weight: bold;
         }
-        .skip-link:focus {
-            top: 0;
-        }
+        .skip-link:focus { top: 0; }
 
-        /* ===== Background Kanji ===== */
-        .bg-kanji {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .bg-kanji span {
-            position: absolute;
-            font-size: 180px;
-            font-weight: 900;
-            color: rgba(255, 215, 0, 0.03);
-            white-space: nowrap;
-            font-family: 'Arial Black', sans-serif;
-            transform: rotate(-15deg);
-        }
-        .bg-kanji span:nth-child(1) { top: 5%; left: 2%; }
-        .bg-kanji span:nth-child(2) { top: 20%; left: 80%; }
-        .bg-kanji span:nth-child(3) { bottom: 10%; left: 10%; }
-        .bg-kanji span:nth-child(4) { bottom: 30%; right: 5%; }
-        .bg-kanji span:nth-child(5) { top: 50%; left: 40%; font-size: 300px; color: rgba(139,0,0,0.05); }
-        
-        .big-do {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 400px;
-            font-family: 'Arial Black', sans-serif;
-            color: rgba(139, 0, 0, 0.08);
-            transform: rotate(-10deg);
-            z-index: 0;
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        /* ===== Layout ===== */
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* ===== ШАПКА (в стиле главной, но упрощённая) ===== */
+        .header {
             display: flex;
-            gap: 30px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--red);
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+            font-family: var(--font-main);
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+        .logo span {
+            font-size: 1rem;
+            color: var(--text-lighter);
+            font-weight: 400;
+        }
+        .logo:hover, .logo:focus {
+            color: var(--text-light);
+            outline: none;
         }
 
-        /* ===== Sidebar Menu ===== */
+        /* ===== БОКОВОЕ МЕНЮ (в стиле карточек главной) ===== */
         .section-menu {
             flex: 0 0 280px;
-            background: var(--bg-card);
+            background: transparent;
             backdrop-filter: blur(5px);
             padding: 20px;
-            border-radius: 15px;
-            border: 1px solid var(--border);
+            border-radius: 8px;
+            border: 1px solid var(--red);
             height: fit-content;
             position: sticky;
             top: 100px;
@@ -152,10 +185,10 @@
         .section-menu h3 {
             color: var(--gold);
             font-size: 1.5rem;
-            border-bottom: 2px solid var(--border);
+            border-bottom: 2px solid var(--red);
             padding-bottom: 10px;
             margin-bottom: 15px;
-            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
         }
         .section-menu ul {
             list-style: none;
@@ -165,13 +198,13 @@
         }
         .section-menu a {
             display: block;
-            color: var(--text-dark);
+            color: var(--text-lighter);
             text-decoration: none;
             padding: 8px 12px;
             border-radius: 4px;
             transition: all 0.2s;
             border-left: 3px solid transparent;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         .section-menu a:hover,
         .section-menu a:focus,
@@ -184,113 +217,99 @@
         .section-menu .back-link-sidebar {
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--red);
         }
         .section-menu .back-link-sidebar a {
             color: var(--gold);
             font-weight: 600;
         }
-        .section-menu .back-link-sidebar a:hover,
-        .section-menu .back-link-sidebar a:focus {
+        .section-menu .back-link-sidebar a:hover {
             background: transparent;
             color: var(--text-light);
         }
 
-        /* ===== Mobile Menu Toggle ===== */
+        /* ===== МОБИЛЬНОЕ МЕНЮ (бургер для боковой навигации) ===== */
         .menu-toggle {
             display: none;
             position: fixed;
             top: 20px;
             left: 20px;
             z-index: 1000;
-            background: var(--red);
+            background: transparent;
             color: var(--gold);
-            border: none;
-            padding: 12px 15px;
+            border: 2px solid var(--gold);
+            padding: 10px 15px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 1.2rem;
+            transition: all 0.3s;
+            background-color: rgba(0,0,0,0.5);
         }
+        .menu-toggle:hover, .menu-toggle:focus {
+            background: var(--red);
+            color: var(--gold);
+            outline: 2px solid var(--gold);
+        }
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 998;
+        }
+        .menu-overlay.active { display: block; }
 
-        /* ===== Main Content ===== */
+        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
         .main-content {
             flex: 1;
-            background: var(--bg-card);
-            backdrop-filter: blur(5px);
+            background: transparent;
             padding: 30px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
+            border-radius: 8px;
+            border: 1px solid var(--red);
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--gold);
-            font-family: 'Noto Serif JP', serif;
-            text-decoration: none;
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
-        .logo span {
-            font-size: 1rem;
-            color: var(--text-lighter);
-            font-family: 'Noto Sans KR', sans-serif;
-            font-weight: 400;
-        }
-        .logo:hover, .logo:focus {
-            color: var(--text-light);
-            outline: none;
-        }
-
-        /* ===== Typography ===== */
+        /* ===== ТИПОГРАФИЯ ===== */
         h1, h2, h3, h4 {
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 600;
+            font-family: var(--font-main);
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.02em;
         }
         .section-block {
             margin-bottom: 60px;
             scroll-margin-top: 100px;
         }
         .section-block h2 {
-            color: var(--gold);
-            font-size: 2rem;
-            border-left: 5px solid var(--border);
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            border-left: 5px solid var(--red);
             padding-left: 20px;
             margin-bottom: 30px;
             line-height: 1.3;
         }
         .section-block h3 {
-            color: var(--gold);
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
             margin: 25px 0 15px;
             padding-left: 15px;
-            border-left: 3px solid var(--border);
+            border-left: 3px solid var(--red);
         }
         .section-block h4 {
-            color: var(--text-light);
             font-size: 1.2rem;
             margin: 20px 0 10px;
+            color: var(--text-light);
         }
         .section-block p {
             margin-bottom: 20px;
-            color: var(--text-light);
+            color: var(--text-lighter);
             line-height: 1.8;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
         }
         .section-block ul, .section-block ol {
             margin-left: 30px;
             margin-bottom: 20px;
-            color: var(--text-light);
+            color: var(--text-lighter);
         }
         .section-block li {
             margin-bottom: 8px;
@@ -300,42 +319,35 @@
             color: var(--gold);
         }
 
-        /* ===== Program Block ===== */
+        /* ===== ПРОГРАММНЫЙ БЛОК ===== */
         .program-block {
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
             padding: 25px;
             margin-bottom: 30px;
-            border: 1px solid rgba(139,0,0,0.3);
-        }
-        .program-block p {
-            margin-bottom: 15px;
-        }
-        .program-block p:last-child {
-            margin-bottom: 0;
+            border: 1px solid var(--red);
         }
 
-        /* ===== Tables ===== */
+        /* ===== ТАБЛИЦЫ ===== */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background: rgba(255,255,255,0.05);
+            background: transparent;
             border-radius: 8px;
             overflow: hidden;
             font-size: 0.95rem;
         }
         th, td {
-            border: 1px solid var(--border);
+            border: 1px solid var(--red);
             padding: 12px;
             text-align: left;
-            color: var(--text-light);
+            color: var(--text-lighter);
         }
         th {
             background: var(--red);
             color: var(--gold);
             font-weight: bold;
-            font-family: 'Noto Serif JP', serif;
         }
         tr:nth-child(even) {
             background: rgba(139,0,0,0.15);
@@ -343,63 +355,80 @@
         tr:hover, tr:focus-within {
             background: rgba(139,0,0,0.25);
         }
-        td strong {
-            color: var(--gold);
-        }
+        td strong { color: var(--gold); }
 
-        /* ===== Belt Colors List ===== */
+        /* ===== СПИСОК ПОЯСОВ ===== */
         .belt-list {
             list-style: none;
             margin-left: 0 !important;
         }
         .belt-list li {
-            padding: 10px 15px;
+            padding: 12px 15px;
             margin-bottom: 8px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.03);
             border-radius: 5px;
-            border-left: 4px solid var(--border);
+            border-left: 4px solid var(--red);
             transition: all 0.2s;
+            color: var(--text-lighter);
         }
         .belt-list li:hover {
             background: rgba(139,0,0,0.2);
             border-left-color: var(--gold);
         }
+        .belt-list li strong { color: var(--gold); }
 
-        /* ===== Back Link ===== */
+        /* ===== КНОПКА НАЗАД ===== */
         .back-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             margin-top: 40px;
             padding: 12px 30px;
-            background: var(--red);
+            background: transparent;
             color: var(--gold);
-            border-radius: 30px;
-            font-weight: bold;
+            border: 2px solid var(--gold);
+            font-weight: 700;
             text-decoration: none;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .back-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--gold);
+            transition: left 0.3s;
+            z-index: -1;
         }
         .back-link:hover, .back-link:focus {
-            background: #a00000;
-            color: var(--text-light);
-            transform: translateX(-5px);
+            color: var(--black);
             outline: 2px solid var(--gold);
             outline-offset: 2px;
         }
+        .back-link:hover:before, .back-link:focus:before {
+            left: 0;
+        }
 
-        /* ===== Scroll to Top ===== */
+        /* ===== КНОПКА НАВЕРХ ===== */
         #scrollTop {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
             background: var(--red);
             color: var(--gold);
             border: 2px solid var(--gold);
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             z-index: 999;
             display: none;
             align-items: center;
@@ -413,28 +442,19 @@
             transform: translateY(-3px);
             outline: none;
         }
-        #scrollTop.visible {
-            display: flex;
-        }
+        #scrollTop.visible { display: flex; }
 
-        /* ===== Print Styles ===== */
+        /* ===== PRINT STYLES ===== */
         @media print {
-            .bg-kanji, .big-do, .section-menu, #scrollTop {
+            .bg-kanji, .big-do, .section-menu, #scrollTop, .menu-toggle, .menu-overlay {
                 display: none !important;
             }
             body { background: white; color: black; }
-            .main-content { 
-                background: white; 
-                border: 1px solid #333;
-                width: 100%;
-                max-width: none;
-            }
-            .section-block { break-inside: avoid; }
-            table { break-inside: avoid; }
+            .main-content { border: 1px solid #333; }
             a { text-decoration: none; color: black; }
         }
 
-        /* ===== Responsive ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .container {
                 flex-direction: column;
@@ -448,6 +468,8 @@
                 border-radius: 0;
                 transition: left 0.3s ease;
                 overflow-y: auto;
+                background: #111;
+                border-right: 2px solid var(--red);
             }
             .section-menu.active {
                 left: 0;
@@ -455,56 +477,30 @@
             .menu-toggle {
                 display: block;
             }
-            .menu-overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.8);
-                z-index: 998;
-            }
             .menu-overlay.active {
                 display: block;
             }
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-            .main-content {
-                padding: 20px;
-            }
-            .section-block h2 {
-                font-size: 1.6rem;
-            }
-            .section-block h3 {
-                font-size: 1.3rem;
-            }
-            table {
-                font-size: 0.85rem;
-            }
-            th, td {
-                padding: 8px;
-            }
-            .logo {
-                font-size: 1.5rem;
-            }
-            .logo span {
-                font-size: 0.85rem;
-            }
-            #scrollTop {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-                bottom: 20px;
-                right: 20px;
-            }
+            .container { padding: 20px 15px; }
+            .main-content { padding: 20px; }
+            .section-block h2 { font-size: 1.6rem; }
+            .section-block h3 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px; }
+            .logo { font-size: 1.5rem; }
+            .logo span { font-size: 0.85rem; }
+            #scrollTop { width: 45px; height: 45px; font-size: 1.1rem; bottom: 20px; right: 20px; }
+            .menu-toggle { top: 15px; left: 15px; padding: 8px 12px; }
         }
 
-        /* ===== Reduced Motion ===== */
+        @media (max-width: 480px) {
+            .container { padding: 15px 10px; }
+            .main-content { padding: 15px; }
+        }
+
+        /* ===== REDUCED MOTION ===== */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -529,14 +525,14 @@
     </div>
     <div class="big-do" aria-hidden="true">道</div>
 
-    <!-- Mobile Menu Toggle -->
-    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
+    <!-- Mobile Menu Toggle (для боковой навигации) -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню разделов" aria-expanded="false">
         <i class="fas fa-bars"></i>
     </button>
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
 
     <div class="container">
-        <!-- Sidebar -->
+        <!-- Sidebar (навигация по разделам) -->
         <nav class="section-menu" id="sectionMenu" role="navigation" aria-label="Навигация по разделам">
             <h3>Аттестация</h3>
             <ul>
@@ -828,7 +824,6 @@
                     <li><strong>Моа-соги</strong> — Стойка ожидания (пятки вместе-носки вместе)</li>
                     <li><strong>Наранхи-соги</strong> — Стойка готовности (ноги на ширине плеч, стопы параллельны)</li>
                     <li><strong>Пьенхи-соги</strong> — Стойка готовности (ноги на ширине плеч, стопы разведены)</li>
-                    <li><strong
                     <li><strong>Чучум-соги</strong> — Стойка «всадника»</li>
                     <li><strong>Ап-соги</strong> — Передняя высокая стойка</li>
                     <li><strong>Ап-куби</strong> — Передняя низкая стойка</li>
@@ -982,9 +977,9 @@
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
-    <!-- JavaScript -->
+    <!-- JavaScript (без изменений, только для меню и скролла) -->
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle (для боковой навигации)
         const menuToggle = document.getElementById('menuToggle');
         const sectionMenu = document.getElementById('sectionMenu');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -1056,9 +1051,7 @@
                 const targetElement = document.getElementById(targetId);
                 
                 if (targetElement) {
-                    // Close mobile menu if open
                     closeMenu();
-                    
                     const headerOffset = 100;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -1086,15 +1079,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Print functionality
-        document.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
-                // Prepare page for printing
-                document.body.classList.add('printing');
-            }
-        });
-
-        console.log('🥋 ФАЙТ Тхэквондо - Страница аттестации загружена');
+        console.log('🥋 ФАЙТ Тхэквондо - Страница аттестации (единый стиль)');
     </script>
 </body>
 </html>

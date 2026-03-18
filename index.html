@@ -250,7 +250,7 @@
             outline-offset: 2px;
         }
 
-        /* Улучшенная видимость на мобильных (оставлено) */
+        /* Улучшенная видимость на мобильных */
         @media (max-width: 768px) {
             .burger-btn {
                 background-color: rgba(0, 0, 0, 0.5);
@@ -501,12 +501,57 @@
             justify-content: center;
         }
 
-        /* ===== СЕКЦИИ ===== */
-        section {
+        /* ===== ВИДЕО (новая секция) ===== */
+        .video-section {
             padding: 60px 0;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .video-card {
+            border: 1px solid var(--red);
+            padding: 20px;
+            transition: all 0.3s;
+            background: transparent;
+            border-radius: 8px;
+        }
+        .video-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 */
+            margin-bottom: 15px;
+            border: 1px solid var(--red);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-info h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .video-info p {
+            font-size: 0.95rem;
         }
 
         /* ===== ТРЕНЕРЫ ===== */
+        .trainers-section {
+            padding: 60px 0;
+        }
         .trainers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -646,6 +691,9 @@
         }
 
         /* ===== ПУТЬ ===== */
+        .path-section {
+            padding: 60px 0;
+        }
         .path-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -725,6 +773,9 @@
         }
 
         /* ===== ФИЛОСОФИЯ ===== */
+        .philosophy-section {
+            padding: 60px 0;
+        }
         .philosophy-container {
             max-width: 800px;
             margin: 0 auto;
@@ -748,6 +799,9 @@
         }
 
         /* ===== ГАЛЕРЕЯ ===== */
+        .gallery-section {
+            padding: 60px 0;
+        }
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -896,7 +950,10 @@
             transform: scale(1.2);
         }
 
-        /* ===== РАСПИСАНИЕ (улучшенное) ===== */
+        /* ===== РАСПИСАНИЕ ===== */
+        .schedule-section {
+            padding: 60px 0;
+        }
         .location-cards {
             display: grid;
             grid-template-columns: 1fr;
@@ -986,6 +1043,9 @@
         }
 
         /* ===== КОНТАКТЫ ===== */
+        .contacts-section {
+            padding: 60px 0;
+        }
         .contacts-container {
             max-width: 800px;
             margin: 0 auto;
@@ -1428,6 +1488,7 @@
             </button>
         </div>
         <ul>
+            <li><a href="#video">Видео</a></li>
             <li><a href="#trainers">Тренеры</a></li>
             <li><a href="#path">Путь</a></li>
             <li><a href="#philosophy">Философия</a></li>
@@ -1469,19 +1530,20 @@
             </div>
         </section>
 
-        <!-- ВИДЕО – СЛОВО ТРЕНЕРА (восстановлено) -->
+        <!-- ВИДЕО – СЛОВО ТРЕНЕРА (добавлено из нового файла) -->
         <section class="video-section" id="video" aria-labelledby="video-heading">
             <div class="container">
                 <h2 class="section-title-full" id="video-heading">Слово тренера</h2>
                 <div class="video-grid">
                     <!-- ВИДЕО ДЛЯ ШКОЛЬНИКОВ -->
                     <article class="video-card">
-                        <div class="video-container" data-video-id="training-video-1">
-                            <div class="video-placeholder" role="button" tabindex="0" aria-label="Воспроизвести видео для родителей школьников" data-src="https://rutube.ru/play/embed/227f2e8d5a2f642563347f101bc21ff7">
-                                <div class="play-btn" aria-hidden="true">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
+                        <div class="video-container">
+                            <iframe 
+                                src="https://rutube.ru/play/embed/227f2e8d5a2f642563347f101bc21ff7"
+                                title="Родителям школьников"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
                         </div>
                         <div class="video-info">
                             <h3>Родителям школьников (7-17 лет)</h3>
@@ -1490,12 +1552,13 @@
                     </article>
                     <!-- ВИДЕО ДЛЯ ДОШКОЛЬНИКОВ -->
                     <article class="video-card">
-                        <div class="video-container" data-video-id="training-video-2">
-                            <div class="video-placeholder" role="button" tabindex="0" aria-label="Воспроизвести видео для родителей дошкольников" data-src="https://rutube.ru/play/embed/f2fc5714e3be1ae288f61a63aedbeaa2">
-                                <div class="play-btn" aria-hidden="true">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
+                        <div class="video-container">
+                            <iframe 
+                                src="https://rutube.ru/play/embed/f2fc5714e3be1ae288f61a63aedbeaa2"
+                                title="Для родителей дошкольников"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
                         </div>
                         <div class="video-info">
                             <h3>Для родителей дошкольников (4-6 лет)</h3>
@@ -1573,7 +1636,7 @@
             </div>
         </section>
 
-        <!-- ФОРМА ЗАПИСИ (исправлена отправка в Telegram) -->
+        <!-- ФОРМА ЗАПИСИ (с токеном бота из нового файла) -->
         <section class="callback-section" id="callback" aria-labelledby="callback-heading">
             <div class="container">
                 <h2 class="section-title-full" style="text-align: center;" id="callback-heading">Записаться на тренировку</h2>
@@ -1937,12 +2000,21 @@
         <button id="cookie-accept">Принять</button>
     </div>
 
-    <!-- JAVASCRIPT (исправленная отправка в Telegram) -->
-    <script>
-        // ⚠️ ЗАМЕНИТЕ НА СВОИ ДАННЫЕ ⚠️
-        const TELEGRAM_BOT_TOKEN = 'ВАШ_ТОКЕН_БОТА';
-        const TELEGRAM_CHAT_ID = 'ВАШ_CHAT_ID';
+    <!-- Yandex.Metrika counter (из нового файла) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106838116', 'ym');
 
+        ym(106838116, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106838116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <!-- JAVASCRIPT -->
+    <script>
         // ===== БУРГЕР-МЕНЮ =====
         const burgerBtn = document.getElementById('burgerBtn');
         const closeMenu = document.getElementById('closeMenu');
@@ -2062,7 +2134,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ===== ФОРМА (отправка в Telegram) =====
+        // ===== ФОРМА (с токеном бота из нового файла) =====
         const tgForm = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
         const formStatus = document.getElementById('formStatus');
@@ -2070,6 +2142,10 @@
         const phoneInput = document.getElementById('phone');
         const nameError = document.getElementById('name-error');
         const phoneError = document.getElementById('phone-error');
+
+        // Токен и chat_id из нового файла
+        const TELEGRAM_BOT_TOKEN = '8116959879:AAF5QqqLdI1UYBxrd9QENbMs_7uZVj8NGQs';
+        const TELEGRAM_CHAT_ID = '1178608703';
 
         function validateName() {
             const value = nameInput.value.trim();
@@ -2109,7 +2185,7 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Отправка...';
 
             try {
-                const message = `📩 Новая заявка с сайта ФАЙТ\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
+                const message = `🔥 НОВАЯ ЗАЯВКА С САЙТА\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
                 const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
                 const response = await fetch(url, {
                     method: 'POST',
@@ -2126,13 +2202,17 @@
                     formStatus.className = 'form-status success';
                     formStatus.textContent = '✅ Заявка отправлена! Мы свяжемся с вами.';
                     tgForm.reset();
+                    
+                    if (typeof ym !== 'undefined') {
+                        ym(106838116, 'reachGoal', 'form_sent');
+                    }
                 } else {
                     throw new Error(result.description);
                 }
             } catch (error) {
                 console.error(error);
                 formStatus.className = 'form-status error';
-                formStatus.textContent = '❌ Ошибка отправки. Попробуйте позже.';
+                formStatus.textContent = '❌ Ошибка отправки. Попробуйте позже или позвоните нам.';
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;

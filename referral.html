@@ -59,6 +59,7 @@
             transform: rotate(-10deg);
             pointer-events: none;
             z-index: 0;
+            font-family: 'Times New Roman', serif;
         }
         .flyer-content {
             position: relative;
@@ -260,6 +261,11 @@
             <!-- Форма для уведомления о приведённом друге -->
             <h3 style="color: var(--gold); text-align: center; margin: 30px 0 15px;">Сообщить о новом друге</h3>
             <form id="referralForm">
+                <!-- Скрытые поля для UTM-меток -->
+                <input type="hidden" id="utm_source" name="utm_source" value="">
+                <input type="hidden" id="utm_medium" name="utm_medium" value="">
+                <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+
                 <div class="form-group">
                     <input type="text" id="referrerName" placeholder="Ваше имя (кто пригласил)" required>
                 </div>
@@ -280,10 +286,21 @@
         </div>
     </div>
 
-    <!-- Токен и chat_id из основного сайта (можно вынести в константы) -->
     <script>
+        // Токен и chat_id из основного сайта
         const TELEGRAM_BOT_TOKEN = '8116959879:AAF5QqqLdI1UYBxrd9QENbMs_7uZVj8NGQs';
         const TELEGRAM_CHAT_ID = '1178608703';
+
+        // Функция для получения параметра из URL
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name) || '';
+        }
+
+        // Заполняем скрытые поля UTM-метками из URL
+        document.getElementById('utm_source').value = getUrlParameter('utm_source');
+        document.getElementById('utm_medium').value = getUrlParameter('utm_medium');
+        document.getElementById('utm_campaign').value = getUrlParameter('utm_campaign');
 
         // Кнопка "Поделиться"
         const shareButton = document.getElementById('shareButton');
@@ -315,13 +332,26 @@
             const friend = document.getElementById('friendName').value.trim();
             const phone = document.getElementById('friendPhone').value.trim();
 
+            // Получаем значения UTM-меток из скрытых полей
+            const utmSource = document.getElementById('utm_source').value;
+            const utmMedium = document.getElementById('utm_medium').value;
+            const utmCampaign = document.getElementById('utm_campaign').value;
+
             if (!referrer || !friend || !phone) {
                 formStatus.className = 'form-status error';
                 formStatus.textContent = 'Заполните все поля';
                 return;
             }
 
-            const message = `🤝 РЕФЕРАЛЬНАЯ ЗАЯВКА\nОт: ${referrer}\nНовый ученик: ${friend}\nТелефон: ${phone}`;
+            // Формируем сообщение с UTM-метками
+            let message = `🤝 РЕФЕРАЛЬНАЯ ЗАЯВКА\n`;
+            message += `От: ${referrer}\n`;
+            message += `Новый ученик: ${friend}\n`;
+            message += `Телефон: ${phone}\n`;
+            if (utmSource) message += `utm_source: ${utmSource}\n`;
+            if (utmMedium) message += `utm_medium: ${utmMedium}\n`;
+            if (utmCampaign) message += `utm_campaign: ${utmCampaign}\n`;
+
             const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
             try {
@@ -335,6 +365,7 @@
                     formStatus.className = 'form-status success';
                     formStatus.textContent = '✅ Заявка отправлена! Мы свяжемся с вами.';
                     form.reset();
+                    // Оставляем UTM-поля заполненными, чтобы не потерять метки при повторной отправке (но форма очищена, они останутся)
                 } else {
                     throw new Error();
                 }
